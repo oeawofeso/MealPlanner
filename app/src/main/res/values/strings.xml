@@ -22,6 +22,8 @@
     <string name="first_name" />
     <string name="enter_first_name">First Name\n</string>
     <string name="enter_last_name">Last Name\n</string>
+    <string name="meal_planner">Meal Planner</string>
+    <string name="explore">Explore</string>
 
 
 </resources>
