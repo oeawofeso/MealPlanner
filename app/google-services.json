@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "742749597772",
+    "project_id": "mealplanner-c87bf",
+    "storage_bucket": "mealplanner-c87bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742749597772:android:bbd8e8a071f7b55301c4e9",
+        "android_client_info": {
+          "package_name": "com.example.logintest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb7US8ZBEQDPjKwf1zaoB6IQ33VUA-Iog"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742749597772:android:b8ea2613ef81d87901c4e9",
+        "android_client_info": {
+          "package_name": "com.example.mealplanner17"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb7US8ZBEQDPjKwf1zaoB6IQ33VUA-Iog"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742749597772:android:9e64dca8a4bb251c01c4e9",
+        "android_client_info": {
+          "package_name": "com.example.mealplannnn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb7US8ZBEQDPjKwf1zaoB6IQ33VUA-Iog"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

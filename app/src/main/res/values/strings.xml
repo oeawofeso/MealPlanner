@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">MealPlanner17</string>
+    <string name="api_key">3ef8f95c17944ed6bac930281b8b453e</string>
+    <string name="meal_name">Meal Name</string>
+
+    <string name="like">like</string>
+    <string name="login">Login</string>
+    <string name="email">email</string>
+    <string name="Email">Email</string>
+    <string name="Password">Password</string>
+    <string name="Register">Register</string>
+    <string name="_2_people" />
+    <string name="Servings">Servings</string>
+    <string name="click_to_login">Click to Login</string>
+    <string name="click_to_register">Click to Register</string>
+
+    <string name="hello_world">Hello World</string>
+    <string name="logout">Logout</string>
+    <string name="dinner">Dinner</string>
+    <string name="lunch">Lunch</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="first_name" />
+    <string name="enter_first_name">First Name\n</string>
+    <string name="enter_last_name">Last Name\n</string>
+
+
+</resources>

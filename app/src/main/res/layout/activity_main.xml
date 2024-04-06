@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Empty View to Push Buttons to Center -->
+
+    <!-- Button for Breakfast -->
+
+    <!-- Button for Lunch -->
+    <TextView
+        android:id="@+id/greetingID"
+        android:layout_width="304dp"
+        android:layout_height="79dp"
+        android:text="TextView"
+        android:textSize="32sp" />
+
+    <Button
+        android:id="@+id/breakfast_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="@string/breakfast" />
+
+    <Button
+        android:id="@+id/lunch_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lunch"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"/>
+
+    <!-- Button for Dinner -->
+    <Button
+        android:id="@+id/dinner_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dinner"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"/>
+
+    <!-- Empty View to Push Buttons to Center -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"/>
+
+    <!-- Logout Button (Bottom Right) -->
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="107dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:text="@string/logout" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+</LinearLayout>
