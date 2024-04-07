@@ -16,9 +16,14 @@
         android:theme="@style/Theme.Material3.Light"
         tools:targetApi="31">
         <activity
+            android:name=".RecipeDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExploreMeals"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Register"
             android:exported="true"
@@ -34,30 +39,39 @@
             </intent-filter>
         </activity>
         <activity android:name=".BreakfastActivity">
+
             <!-- intent filters if any -->
         </activity>
         <activity android:name=".BreakfastGenerateActivity">
-        <!-- intent filters if any -->
+
+            <!-- intent filters if any -->
         </activity>
         <activity android:name=".BreakfastFavoriteActivity">
+
             <!-- intent filters if any -->
         </activity>
         <activity android:name=".LunchFavoriteActivity">
+
             <!-- intent filters if any -->
         </activity>
         <activity android:name=".LunchGenerateActivity">
+
             <!-- intent filters if any -->
         </activity>
         <activity android:name=".LunchActivity">
+
             <!-- intent filters if any -->
         </activity>
         <activity android:name=".DinnerActivity">
+
             <!-- intent filters if any -->
         </activity>
         <activity android:name=".DinnerGenerateActivity">
+
             <!-- intent filters if any -->
         </activity>
         <activity android:name=".DinnerFavoriteActivity">
+
             <!-- intent filters if any -->
         </activity>
     </application>

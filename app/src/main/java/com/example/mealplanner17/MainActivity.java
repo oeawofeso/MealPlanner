@@ -1,7 +1,7 @@
 package com.example.mealplanner17;
 
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.firebase.Firebase;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import android.content.Intent;
@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         Button breakfastButton = findViewById(R.id.breakfast_button);
         Button lunchButton = findViewById(R.id.lunch_button);
         Button dinnerButton = findViewById(R.id.dinner_button);
+        Button exploreButton= findViewById(R.id.explore_button);
         user= auth.getCurrentUser();
         TextView greeting = (TextView) findViewById (R.id.greetingID);
         // Get the SharedPreferences object for "UserDetails"
@@ -96,6 +97,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DinnerActivity.class);
+                startActivity(intent);
+            }
+        });
+        exploreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ExploreMeals.class);
                 startActivity(intent);
             }
         });

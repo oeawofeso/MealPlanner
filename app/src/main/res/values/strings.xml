@@ -14,6 +14,33 @@
     <string name="click_to_login">Click to Login</string>
     <string name="click_to_register">Click to Register</string>
 
+    <string-array name="tags">
+        <item>main course</item>
+        <item>breakfast</item>
+        <item>appetizer</item>
+        <item>side dish</item>
+        <item>snack</item>
+        <item>salad</item>
+        <item>beverage</item>
+        <item>dessert</item>
+    </string-array>
+
+
+    <string name="account">Account</string>
+    <string name="home">Home</string>
+    <string name="discover_meals">Discover Meals</string>
+    <string name="menu">Menu</string>
+    <string name="dessert">dessert</string>
+    <string name="dish_name">Dish name</string>
+    <string name="source">Source</string>
+    <string name="summary">Summary</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="_1_pc">1 pc</string>
+    <string name="chicken">chicken</string>
+    <string name="similar_name">Similar Name</string>
+    <string name="similar_recipes">Similar Recipes</string>
+
+
     <string name="hello_world">Hello World</string>
     <string name="logout">Logout</string>
     <string name="dinner">Dinner</string>
