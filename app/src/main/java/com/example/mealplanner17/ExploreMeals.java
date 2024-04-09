@@ -41,8 +41,9 @@ public class ExploreMeals extends AppCompatActivity {
     //spinner object
     Spinner spinner;
     List<String> tags= new ArrayList<>();
+    List<String> tags2= new ArrayList<>();
 
-    //search view obkec
+    //search view
     SearchView searchView;
 
 
@@ -103,7 +104,8 @@ public class ExploreMeals extends AppCompatActivity {
         public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
             tags.clear();
             tags.add(adapterView.getSelectedItem().toString());
-            manager.getRandomRecipes(randomRecipeResponseListener,tags);
+            tags2.clear();
+            manager.getRandomRecipes(randomRecipeResponseListener,tags,tags2);
             dialog.show();
         }
 

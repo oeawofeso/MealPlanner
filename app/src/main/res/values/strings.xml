@@ -25,6 +25,22 @@
         <item>dessert</item>
     </string-array>
 
+    <string-array name="breakfastTags">
+        <item>breakfast</item>
+        <item>vegetarian</item>
+        <item>vegan</item>
+        <item>gluten free</item>
+        <item>dairy</item>
+    </string-array>
+    <string-array name="breakfastTagsExclude">
+        <item>dairy</item>
+        <item>egg</item>
+        <item>gluten</item>
+        <item>peanut</item>
+        <item>tree Nut</item>
+
+    </string-array>
+
 
     <string name="account">Account</string>
     <string name="home">Home</string>
@@ -51,6 +67,9 @@
     <string name="enter_last_name">Last Name\n</string>
     <string name="meal_planner">Meal Planner</string>
     <string name="explore">Explore</string>
+    <string name="order_filter_by">Order Filter By:</string>
+    <string name="food_intolerance">Food Intolerance:</string>
+    <string name="filter_food_by">Filter Food by</string>
 
 
 </resources>
