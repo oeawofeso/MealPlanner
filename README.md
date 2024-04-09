@@ -6,11 +6,8 @@ Login/Register Page
 Home/Main page 
 ![img_1.png](homePage.png)
 
-Explore Meals
-![img_2.png](exploreMeals.png)
+Generate Breakfast
+![img_4.png](generateBreakfast.png)
 
 Explore Dish Details
 ![img_3.png](exploreDishes.png)
-
-Generate Breakfast
-![img_4.png](generateBreakfast.png)

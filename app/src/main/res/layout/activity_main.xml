@@ -31,7 +31,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="75dp"
             app:cardBackgroundColor="@android:color/transparent">
 
             <Button
@@ -50,7 +50,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="75dp"
             app:cardBackgroundColor="@android:color/transparent">
 
             <Button
@@ -84,23 +84,7 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- CardView for Explore -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:cardBackgroundColor="@android:color/transparent">
 
-            <Button
-                android:id="@+id/explore_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textColor="@color/white"
-                android:text="@string/explore"
-                android:textSize="18sp"
-                android:background="@color/blue"
-                android:gravity="center"/>
-
-        </androidx.cardview.widget.CardView>
 
 
     </LinearLayout>

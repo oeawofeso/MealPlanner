@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         Button breakfastButton = findViewById(R.id.breakfast_button);
         Button lunchButton = findViewById(R.id.lunch_button);
         Button dinnerButton = findViewById(R.id.dinner_button);
-        Button exploreButton= findViewById(R.id.explore_button);
+
         user= auth.getCurrentUser();
         TextView greeting = (TextView) findViewById (R.id.greetingID);
         // Get the SharedPreferences object for "UserDetails"
@@ -100,12 +100,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        exploreButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ExploreMeals.class);
-                startActivity(intent);
-            }
-        });
+
     }
 }
