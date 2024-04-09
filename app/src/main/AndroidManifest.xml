@@ -18,9 +18,7 @@
         <activity
             android:name=".API.RecipeDetailsActivity"
             android:exported="false" />
-        <activity
-            android:name=".ExploreMeals"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />
