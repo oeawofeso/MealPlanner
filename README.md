@@ -9,5 +9,3 @@ Home/Main page
 Generate Breakfast
 ![img_4.png](generateBreakfast.png)
 
-Explore Dish Details
-![img_3.png](exploreDishes.png)
