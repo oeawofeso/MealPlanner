@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/cyan"
-    tools:context=".RecipeDetailsActivity">
+    tools:context=".API.RecipeDetailsActivity">
 
     <androidx.appcompat.widget.Toolbar
         app:title="Dish Details"

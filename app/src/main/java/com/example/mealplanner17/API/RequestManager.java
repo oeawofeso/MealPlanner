@@ -1,4 +1,4 @@
-package com.example.mealplanner17;
+package com.example.mealplanner17.API;
 
 
 import android.content.Context;
@@ -9,6 +9,7 @@ import com.example.mealplanner17.Listeners.SimilarRecipesListener;
 import com.example.mealplanner17.Models.RandomRecipeApiResponse;
 import com.example.mealplanner17.Models.RecipeDetailsResponse;
 import com.example.mealplanner17.Models.SimilarRecipeResponse;
+import com.example.mealplanner17.R;
 
 import java.util.List;
 

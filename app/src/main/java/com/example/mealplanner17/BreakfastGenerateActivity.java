@@ -5,6 +5,8 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mealplanner17.API.RecipeDetailsActivity;
+import com.example.mealplanner17.API.RequestManager;
 import com.example.mealplanner17.Listeners.RecipeClickListener;
 
 
@@ -146,7 +148,7 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
     private final RecipeClickListener recipeClickListener = new RecipeClickListener() {
         @Override
         public void onRecipeClick(String id) {
-            startActivity(new Intent(BreakfastGenerateActivity.this,RecipeDetailsActivity.class)
+            startActivity(new Intent(BreakfastGenerateActivity.this, RecipeDetailsActivity.class)
                     .putExtra("id",id));
         }
     };

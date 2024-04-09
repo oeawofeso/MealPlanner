@@ -1,4 +1,4 @@
-package com.example.mealplanner17;
+package com.example.mealplanner17.API;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,13 +15,10 @@ import com.example.mealplanner17.Adapters.IngredientsAdapter;
 
 import com.example.mealplanner17.Listeners.RecipeClickListener;
 import com.example.mealplanner17.Listeners.RecipeDetailsListener;
-import com.example.mealplanner17.Listeners.SimilarRecipesListener;
-import com.example.mealplanner17.Models.Ingredient;
 import com.example.mealplanner17.Models.RecipeDetailsResponse;
-import com.example.mealplanner17.Models.SimilarRecipeResponse;
+import com.example.mealplanner17.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
 import java.util.Objects;
 
 public class RecipeDetailsActivity extends AppCompatActivity {
