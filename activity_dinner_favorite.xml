@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- EditText for food name -->
+    <EditText
+        android:id="@+id/food_name_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter food name"
+        android:layout_marginBottom="16dp"
+        android:inputType="text" />
+
+    <!-- EditText for ingredients -->
+    <EditText
+        android:id="@+id/ingredients_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter ingredients (comma-separated)"
+        android:layout_below="@id/food_name_edit_text"
+        android:layout_marginBottom="16dp"
+        android:inputType="textMultiLine" />
+
+    <!-- EditText for cooking instructions -->
+    <EditText
+        android:id="@+id/instructions_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter cooking instructions"
+        android:layout_below="@id/ingredients_edit_text"
+        android:layout_marginBottom="16dp"
+        android:inputType="textMultiLine" />
+
+    <!-- Button to save the recipe -->
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_below="@id/instructions_edit_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" /> <!-- Increase margin top for better spacing -->
+
+    <!-- Add your UI elements here -->
+
+</RelativeLayout>
