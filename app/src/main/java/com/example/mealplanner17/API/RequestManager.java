@@ -5,7 +5,6 @@ import android.content.Context;
 
 import com.example.mealplanner17.Listeners.RandomRecipeResponseListener;
 import com.example.mealplanner17.Listeners.RecipeDetailsListener;
-import com.example.mealplanner17.Listeners.SimilarRecipesListener;
 import com.example.mealplanner17.Models.RandomRecipeApiResponse;
 import com.example.mealplanner17.Models.RecipeDetailsResponse;
 import com.example.mealplanner17.Models.SimilarRecipeResponse;
@@ -73,26 +72,7 @@ public class RequestManager {
             }
         });
     }
-    public void getSimilarRecipe(SimilarRecipesListener listener,int id){
-        CallSimilarRecipes callSimilarRecipes= retrofit.create(CallSimilarRecipes.class);
-        Call<List<SimilarRecipeResponse>> call= callSimilarRecipes.callSimilarRecipes(id,1,context.getString(R.string.api_key));
-        call.enqueue(new Callback<List<SimilarRecipeResponse>>() {
-            @Override
-            public void onResponse(Call<List<SimilarRecipeResponse>> call, Response<List<SimilarRecipeResponse>> response) {
-                if(!response.isSuccessful()){
-                    listener.didError(response.message());
-                    return;
-                }
-                listener.didFetch(response.body(),response.message());
 
-            }
-
-            @Override
-            public void onFailure(Call<List<SimilarRecipeResponse>> call, Throwable t) {
-                listener.didError(t.getMessage());
-            }
-        });
-    }
     private interface CallRandomRecipes{
         @GET("recipes/random")
         Call<RandomRecipeApiResponse> callRandomRecipe(

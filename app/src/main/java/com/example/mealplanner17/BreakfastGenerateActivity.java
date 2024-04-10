@@ -46,8 +46,7 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
     List<String> breakfastTags= new ArrayList<>();
     List<String> breakfastTagsExclude= new ArrayList<>();
 
-    //search view
-    SearchView searchView;
+
 
 
     @SuppressLint("MissingInflatedId")
