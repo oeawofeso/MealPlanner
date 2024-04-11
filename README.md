@@ -9,3 +9,7 @@ Home/Main page
 Generate Breakfast
 ![img_4.png](generateBreakfast.png)
 
+Dish details
+![img.png](dishDetails.png)
+
+
