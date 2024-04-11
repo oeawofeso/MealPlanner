@@ -1,10 +1,10 @@
 package com.example.mealplanner17;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DinnerActivity extends AppCompatActivity {
 
@@ -13,8 +13,8 @@ public class DinnerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dinner);
 
-        Button button1 = findViewById(R.id.button1);
-        Button button2 = findViewById(R.id.button2);
+        Button button1 = findViewById(R.id.buttonGenerateDinner); // Corrected button id
+        Button button2 = findViewById(R.id.buttonAddFavoriteDinner); // Corrected button id
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,7 +24,6 @@ public class DinnerActivity extends AppCompatActivity {
             }
         });
 
-
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,6 +31,5 @@ public class DinnerActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }

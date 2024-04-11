@@ -1,14 +1,14 @@
 package com.example.mealplanner17;
 
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-import android.view.View;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DinnerFavoriteActivity extends AppCompatActivity {
     private EditText mealNameEditText;
@@ -31,7 +31,6 @@ public class DinnerFavoriteActivity extends AppCompatActivity {
         // Create or open the database
         SQLiteOpenHelper dbHelper = new RecipeDatabaseHelper(this);
         db = dbHelper.getWritableDatabase();
-
 
         // Set OnClickListener for the saveButton
         saveButton.setOnClickListener(new View.OnClickListener() {
