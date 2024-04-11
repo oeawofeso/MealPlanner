@@ -70,6 +70,7 @@
     <string name="order_filter_by">Order Filter By:</string>
     <string name="food_intolerance">Food Intolerance:</string>
     <string name="filter_food_by">Filter Food by</string>
+    <string name="recipe">Recipe</string>
 
 
 </resources>

@@ -8,11 +8,7 @@
     android:background="@color/cyan"
     tools:context=".API.RecipeDetailsActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        app:title="Dish Details"
-        app:titleTextColor="@color/black"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" />
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,6 +16,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:gravity="center"
+            android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
@@ -44,21 +41,9 @@
                 android:id="@+id/imageView_meal_image"
                 android:layout_margin="8dp"
                 android:scaleType="centerCrop"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:contentDescription="@null"/>
-
-            <TextView
-                android:id="@+id/textView_meal_summary"
-                android:text="@string/summary"
-                android:textSize="14sp"
-                android:textStyle="normal"
-                android:padding="8dp"
-                android:layout_margin="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-
             <TextView
                 android:text="@string/ingredients"
                 android:textStyle="bold"
@@ -73,6 +58,26 @@
                 android:layout_margin="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="@string/recipe"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:padding="4dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/stepList"
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+
 
 
         </LinearLayout>
