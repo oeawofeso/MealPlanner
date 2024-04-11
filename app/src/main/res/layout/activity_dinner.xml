@@ -4,20 +4,39 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
+    <!-- EditText for Meal Name -->
+    <EditText
+        android:id="@+id/editTextMealName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Generate"
-        android:layout_marginBottom="16dp"
-        android:layout_centerHorizontal="true"/>
+        android:hint="Meal Name"
+        android:layout_marginBottom="16dp"/>
 
+    <!-- EditText for Ingredients -->
+    <EditText
+        android:id="@+id/editTextIngredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextMealName"
+        android:hint="Ingredients"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- EditText for Cooking Instructions -->
+    <EditText
+        android:id="@+id/editTextCookingInstructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextIngredients"
+        android:hint="Cooking Instructions"
+        android:layout_marginBottom="16dp"/>
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnSaveMeal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Favorites"
-        android:layout_below="@id/button1"
-        android:layout_centerHorizontal="true"/>
+        android:layout_below="@id/editTextCookingInstructions"
+        android:layout_centerHorizontal="true"
+        android:text="Save Meal"/>
+
+    <!-- Add your UI elements here -->
 
 </RelativeLayout>
