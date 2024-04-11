@@ -12,7 +12,7 @@ public class DinnerFavoriteActivity extends AppCompatActivity {
 
         // Retrieve EditText reference
         EditText editTextFavorite = findViewById(R.id.editTextFavorite);
-
+//hello
         // You can now use editTextFavorite to get user input or perform any other actions
     }
 }
