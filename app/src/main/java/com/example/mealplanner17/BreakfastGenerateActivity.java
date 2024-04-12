@@ -12,6 +12,7 @@ import com.example.mealplanner17.Listeners.RecipeClickListener;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -110,10 +111,16 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
             breakfastTags.clear();
-            breakfastTags.add("breakfast");
-            breakfastTags.add(adapterView.getSelectedItem().toString());
-
             breakfastTagsExclude.clear();
+            breakfastTags.add("breakfast");
+            String selectedTag = adapterView.getSelectedItem().toString();
+            if (!selectedTag.equals("breakfast")) {
+                breakfastTags.add(selectedTag);
+            }
+
+            Log.d("BreakfastGenerateActivity", "First tagsInc: " + breakfastTags.toString());
+            Log.d("BreakfastGenerateActivity", "First tagsExclude: " + breakfastTagsExclude.toString());
+
             manager.getRandomRecipes(randomRecipeResponseListener,breakfastTags,breakfastTagsExclude);
             dialog.show();
         }
@@ -132,6 +139,9 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
 
             breakfastTagsExclude.clear();
             breakfastTagsExclude.add(adapterView.getSelectedItem().toString());
+
+            Log.d("BreakfastGenerateActivity", "Second tagsInc: " + breakfastTags.toString());
+            Log.d("BreakfastGenerateActivity", "Second tagsExclude: " + breakfastTagsExclude.toString());
             manager.getRandomRecipes(randomRecipeResponseListener,breakfastTags,breakfastTagsExclude);
             dialog.show();
         }
