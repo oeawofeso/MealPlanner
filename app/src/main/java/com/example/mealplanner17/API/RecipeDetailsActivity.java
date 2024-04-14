@@ -70,9 +70,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         dialog.setTitle("Loading Details...");
         dialog.show();
 
-        SharedPreferences sharedPreferences = getSharedPreferences("MyFavoriteMeals", Context.MODE_PRIVATE);
-        boolean isFavorite = sharedPreferences.getBoolean(String.valueOf(id), false);
-        btnFavorite.setSelected(isFavorite);
+
 
 
     }
@@ -81,7 +79,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     private void initObjects() {
         textView_meal_name = findViewById(R.id.textView_meal_name);
         textView_meal_source = findViewById(R.id.textView_meal_source);
-        btnFavorite = findViewById(R.id.btn_favorite);
+
         imageView_meal_image= findViewById(R.id.imageView_meal_image);
         imageView_ingredients = findViewById(R.id.imageView_ingredients);
         recycler_meal_ingredients= findViewById(R.id.recycler_meal_ingredients);

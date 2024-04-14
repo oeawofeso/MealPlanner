@@ -6,13 +6,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.mealplanner17.API.RecipeDetailsActivity;
 import com.example.mealplanner17.API.RequestManager;
 import com.example.mealplanner17.Adapters.RandomRecipeAdapter;
+import com.example.mealplanner17.Breakfast.BreakfastGenerateActivity;
 import com.example.mealplanner17.Listeners.RecipeClickListener;
 import com.example.mealplanner17.Listeners.RecipeDetailsListener;
 import com.example.mealplanner17.ModelsAPI.Recipe;
@@ -90,9 +93,11 @@ public class MyFavoriteMealsActivity extends AppCompatActivity implements Recipe
         recyclerView.setAdapter(adapter);
     }
 
+
+
     @Override
     public void onRecipeClick(String id) {
-
-        Toast.makeText(this, "Clicked on recipe with ID: " + id, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(MyFavoriteMealsActivity.this, RecipeDetailsActivity.class)
+                .putExtra("id", id));
     }
 }
