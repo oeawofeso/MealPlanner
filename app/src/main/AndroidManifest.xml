@@ -16,18 +16,20 @@
         android:theme="@style/Theme.Material3.Light"
         tools:targetApi="31">
         <activity
+            android:name=".MyFavoriteMealsActivity"
+            android:exported="false" />
+        <activity
             android:name=".API.RecipeDetailsActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Register"
+            android:name=".Auth.Register"
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
-            android:name=".Login"
+            android:name=".Auth.Login"
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar">
             <intent-filter>
@@ -36,15 +38,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BreakfastActivity">
+        <activity android:name=".Breakfast.BreakfastActivity">
 
             <!-- intent filters if any -->
         </activity>
-        <activity android:name=".BreakfastGenerateActivity">
+        <activity android:name=".Breakfast.BreakfastGenerateActivity">
 
             <!-- intent filters if any -->
         </activity>
-        <activity android:name=".BreakfastFavoriteActivity">
+        <activity android:name=".Breakfast.BreakfastFavoriteActivity">
 
             <!-- intent filters if any -->
         </activity>

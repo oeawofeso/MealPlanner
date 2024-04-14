@@ -1,4 +1,4 @@
-package com.example.mealplanner17.Models;
+package com.example.mealplanner17.ModelsAPI;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,9 @@ public class RecipeDetailsResponse {
     public String title;
     public String image;
     public String sourceName;
+
     public ArrayList<ExtendedIngredient> extendedIngredients;
 
 
+    public int servings;
 }

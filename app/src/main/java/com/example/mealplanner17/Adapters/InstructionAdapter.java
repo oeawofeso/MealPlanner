@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mealplanner17.Models.Step;
+import com.example.mealplanner17.ModelsAPI.Step;
 import com.example.mealplanner17.R;
 
 import java.util.List;

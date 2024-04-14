@@ -2,8 +2,12 @@ package com.example.mealplanner17;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mealplanner17.Auth.Login;
+import com.example.mealplanner17.Breakfast.BreakfastActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.View;
@@ -54,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
         Button breakfastButton = findViewById(R.id.breakfast_button);
         Button lunchButton = findViewById(R.id.lunch_button);
         Button dinnerButton = findViewById(R.id.dinner_button);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyFavoriteMeals", Context.MODE_PRIVATE);
+        sharedPreferences.edit().clear().apply();
+
 
         user= auth.getCurrentUser();
         TextView greeting = (TextView) findViewById (R.id.greetingID);

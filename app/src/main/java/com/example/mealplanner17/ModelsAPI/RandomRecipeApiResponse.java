@@ -1,4 +1,4 @@
-package com.example.mealplanner17.Models;
+package com.example.mealplanner17.ModelsAPI;
 
 import java.util.ArrayList;
 

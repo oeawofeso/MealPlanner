@@ -2,24 +2,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@drawable/main_backdrop"
+    android:padding="45dp">
 
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Generate"
+        android:layout_centerInParent="true"
         android:layout_marginBottom="16dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:text="@string/generate_random_dishes" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add your breakfast"
+        android:text="@string/add_own_meal"
         android:layout_below="@id/button1"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerInParent="true"
+
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/favorite_random_dishes"
+        android:layout_below="@id/button2"
+        android:layout_centerInParent="true"
+       />
 
 </RelativeLayout>

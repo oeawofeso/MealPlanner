@@ -5,8 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,8 +18,8 @@ import com.example.mealplanner17.Adapters.IngredientsAdapter;
 
 import com.example.mealplanner17.Adapters.InstructionAdapter;
 import com.example.mealplanner17.Listeners.RecipeDetailsListener;
-import com.example.mealplanner17.Models.InstructionResponse;
-import com.example.mealplanner17.Models.RecipeDetailsResponse;
+import com.example.mealplanner17.ModelsAPI.InstructionResponse;
+import com.example.mealplanner17.ModelsAPI.RecipeDetailsResponse;
 import com.example.mealplanner17.R;
 import com.squareup.picasso.Picasso;
 
@@ -36,6 +39,9 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     RequestManager manager;
     ProgressDialog dialog;
     IngredientsAdapter ingredientsAdapter;
+    Button btnFavorite;
+
+
 
 
     private static final String TAG = "RecipeDetailsActivity";
@@ -63,13 +69,19 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         dialog= new ProgressDialog(this);
         dialog.setTitle("Loading Details...");
         dialog.show();
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyFavoriteMeals", Context.MODE_PRIVATE);
+        boolean isFavorite = sharedPreferences.getBoolean(String.valueOf(id), false);
+        btnFavorite.setSelected(isFavorite);
+
+
     }
 
 
     private void initObjects() {
         textView_meal_name = findViewById(R.id.textView_meal_name);
         textView_meal_source = findViewById(R.id.textView_meal_source);
-
+        btnFavorite = findViewById(R.id.btn_favorite);
         imageView_meal_image= findViewById(R.id.imageView_meal_image);
         imageView_ingredients = findViewById(R.id.imageView_ingredients);
         recycler_meal_ingredients= findViewById(R.id.recycler_meal_ingredients);

@@ -70,6 +70,12 @@
     <string name="food_intolerance">Food Intolerance:</string>
     <string name="filter_food_by">Filter Food by</string>
     <string name="recipe">Recipe</string>
+    <string name="save">Save</string>
+    <string name="favorite">Favorite</string>
+
+    <string name="favorite_random_dishes">Favorite Random Dishes</string>
+    <string name="add_own_meal">Add Own Meal</string>
+    <string name="generate_random_dishes">Generate Random Dishes</string>
 
 
 </resources>

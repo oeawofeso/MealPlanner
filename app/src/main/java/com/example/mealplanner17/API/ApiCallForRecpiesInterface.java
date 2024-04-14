@@ -1,6 +1,6 @@
 package com.example.mealplanner17.API;
 
-import com.example.mealplanner17.Models.InstructionResponse;
+import com.example.mealplanner17.ModelsAPI.InstructionResponse;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;

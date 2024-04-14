@@ -1,7 +1,6 @@
 package com.example.mealplanner17.Adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mealplanner17.Models.ExtendedIngredient;
+import com.example.mealplanner17.ModelsAPI.ExtendedIngredient;
 import com.example.mealplanner17.R;
 import com.squareup.picasso.Picasso;
 

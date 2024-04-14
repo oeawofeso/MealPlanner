@@ -5,9 +5,9 @@ import android.content.Context;
 
 import com.example.mealplanner17.Listeners.RandomRecipeResponseListener;
 import com.example.mealplanner17.Listeners.RecipeDetailsListener;
-import com.example.mealplanner17.Models.InstructionResponse;
-import com.example.mealplanner17.Models.RandomRecipeApiResponse;
-import com.example.mealplanner17.Models.RecipeDetailsResponse;
+import com.example.mealplanner17.ModelsAPI.InstructionResponse;
+import com.example.mealplanner17.ModelsAPI.RandomRecipeApiResponse;
+import com.example.mealplanner17.ModelsAPI.RecipeDetailsResponse;
 
 import com.example.mealplanner17.R;
 
@@ -93,14 +93,6 @@ public class RequestManager {
                 @Query("apiKey") String apiKey
 
         );
-    }
-
-    public interface ApiInterface {
-
-        @GET("{id}/analyzedInstructions")
-        Call<List<InstructionResponse>> getInstructions(@Path("id") int id, @Query("apiKey") String apiKey);
-
-
     }
 
 

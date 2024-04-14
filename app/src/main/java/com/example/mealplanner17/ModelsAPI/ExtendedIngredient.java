@@ -1,5 +1,5 @@
-package com.example.mealplanner17.Models;
-import java.util.*;
+package com.example.mealplanner17.ModelsAPI;
+
 public class ExtendedIngredient {
     public int id;
 

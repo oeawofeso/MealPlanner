@@ -1,4 +1,4 @@
-package com.example.mealplanner17.Models;
+package com.example.mealplanner17.ModelsAPI;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
