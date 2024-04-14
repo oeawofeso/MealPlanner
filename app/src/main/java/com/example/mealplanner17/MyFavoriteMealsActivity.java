@@ -92,7 +92,7 @@ public class MyFavoriteMealsActivity extends AppCompatActivity implements Recipe
 
     @Override
     public void onRecipeClick(String id) {
-        // TODO: Handle recipe click (navigate to details activity or something else)
+
         Toast.makeText(this, "Clicked on recipe with ID: " + id, Toast.LENGTH_SHORT).show();
     }
 }
