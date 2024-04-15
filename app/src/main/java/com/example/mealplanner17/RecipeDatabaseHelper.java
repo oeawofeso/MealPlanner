@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class RecipeDatabaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "recipes.db";
+    private static final String DATABASE_NAME = "recipe_data.db";
     private static final int DATABASE_VERSION = 1;
 
     // Constructor

@@ -1,11 +1,14 @@
 package com.example.mealplanner17;
 
+
 import androidx.appcompat.app.AppCompatActivity;
+
 
 import com.example.mealplanner17.Auth.Login;
 import com.example.mealplanner17.Breakfast.BreakfastActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,8 +18,11 @@ import android.widget.Button;
 import android.os.Bundle;
 import android.widget.TextView;
 
+
 import java.util.Calendar;
 import java.util.Date;
+
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -24,11 +30,13 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     FirebaseUser user;
 
+
     public String getGreet(){
         Date date = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         int hour = cal.get(Calendar.HOUR_OF_DAY);
+
 
         /**
          * Get the time of day
@@ -46,10 +54,14 @@ public class MainActivity extends AppCompatActivity {
         return greet;
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
 
 
 
@@ -59,14 +71,18 @@ public class MainActivity extends AppCompatActivity {
         Button lunchButton = findViewById(R.id.lunch_button);
         Button dinnerButton = findViewById(R.id.dinner_button);
 
+
         SharedPreferences sharedPreferences = getSharedPreferences("MyFavoriteMeals", Context.MODE_PRIVATE);
         sharedPreferences.edit().clear().apply();
+
+
 
 
         user= auth.getCurrentUser();
         TextView greeting = (TextView) findViewById (R.id.greetingID);
         // Get the SharedPreferences object for "UserDetails"
         SharedPreferences prefs = getSharedPreferences("UserDetails", MODE_PRIVATE);
+
 
         // Retrieve data from SharedPreferences
         String firstName = prefs.getString("first_name", "defaultFirstName"); // "defaultFirstName" is a default value.
@@ -109,5 +125,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
     }
 }
+

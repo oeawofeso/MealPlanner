@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+import android.widget.Toast;
 
 public class DinnerActivity extends AppCompatActivity {
 
@@ -13,10 +14,11 @@ public class DinnerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dinner);
 
-        Button button1 = findViewById(R.id.buttonGenerateDinner); // Corrected button id
-        Button button2 = findViewById(R.id.buttonAddFavoriteDinner); // Corrected button id
+        Button buttonGenerateDinner = findViewById(R.id.buttonGenerateDinner);
+        Button buttonAddFavoriteDinner = findViewById(R.id.buttonAddFavoriteDinner);
+        Button buttonViewData = findViewById(R.id.buttonViewData); // Reference to the view data button
 
-        button1.setOnClickListener(new View.OnClickListener() {
+        buttonGenerateDinner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DinnerActivity.this, DinnerGenerateActivity.class);
@@ -24,12 +26,28 @@ public class DinnerActivity extends AppCompatActivity {
             }
         });
 
-        button2.setOnClickListener(new View.OnClickListener() {
+        buttonAddFavoriteDinner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DinnerActivity.this, DinnerFavoriteActivity.class);
                 startActivity(intent);
             }
         });
+
+        buttonViewData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    // Start DinnerViewDataActivity to view the data
+                    Intent intent = new Intent(DinnerActivity.this, DinnerViewDataActivity.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    // Handle the exception, such as showing an error message to the user
+                    Toast.makeText(DinnerActivity.this, "An error occurred", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 }

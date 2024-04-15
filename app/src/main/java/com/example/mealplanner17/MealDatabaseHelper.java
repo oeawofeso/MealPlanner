@@ -57,10 +57,10 @@ public class MealDatabaseHelper extends SQLiteOpenHelper {
         // Upgrade logic, if needed
     }
 
-    // Method to get all breakfast meals from the database
-    public Cursor getAllBreakfastMeals() {
+    // Method to get all dinner meals from the database
+    public Cursor getAllDinnerMeals() {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.query(TABLE_BREAKFAST, null, null, null, null, null, null);
+        return db.query(TABLE_DINNER, null, null, null, null, null, null);
     }
 
     // Method to delete a breakfast meal from the database
@@ -70,6 +70,6 @@ public class MealDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Similarly, you can add methods for lunch and dinner meals
-    // getAllLunchMeals(), deleteLunchMeal(), getAllDinnerMeals(), deleteDinnerMeal()
+    // Similarly, you can add methods for lunch meals
+    // getAllLunchMeals(), deleteLunchMeal()
 }
