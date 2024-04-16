@@ -24,9 +24,9 @@ import java.util.List;
 
 public class RandomRecipeAdapter extends RecyclerView.Adapter<RandomRecipeViewHolder> {
 
-    Context context;
-    List<Recipe> list;
-    RecipeClickListener listener;
+    private Context context;
+    private List<Recipe> list;
+    private RecipeClickListener listener;
 
     public RandomRecipeAdapter(Context context, List<Recipe> list, RecipeClickListener listener) {
         this.context = context;
@@ -77,6 +77,11 @@ public class RandomRecipeAdapter extends RecyclerView.Adapter<RandomRecipeViewHo
         return list.size();
     }
 
+    public void setRecipes(List<Recipe> recipes) {
+        this.list = recipes;
+        notifyDataSetChanged();
+    }
+
     private void toggleFavoriteStatus(Recipe recipe, Button btnFavorite) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("MyFavoriteMeals", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -92,13 +97,16 @@ public class RandomRecipeAdapter extends RecyclerView.Adapter<RandomRecipeViewHo
         editor.apply();
         btnFavorite.setSelected(!btnFavorite.isSelected());
     }
+    public List<Recipe> getList() {
+        return list;
+    }
 }
-class RandomRecipeViewHolder extends RecyclerView.ViewHolder{
-   CardView random_list_container;
-   TextView textView_title,TextView_servings,TextView_like;
-   ImageView imageView_food;
-    Button btnFavorite;
 
+class RandomRecipeViewHolder extends RecyclerView.ViewHolder {
+    CardView random_list_container;
+    TextView textView_title, TextView_servings, TextView_like;
+    ImageView imageView_food;
+    Button btnFavorite;
 
     public RandomRecipeViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -110,4 +118,3 @@ class RandomRecipeViewHolder extends RecyclerView.ViewHolder{
         btnFavorite = itemView.findViewById(R.id.btn_favorite);
     }
 }
-
