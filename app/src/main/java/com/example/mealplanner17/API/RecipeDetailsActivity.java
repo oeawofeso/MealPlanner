@@ -5,8 +5,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -17,6 +15,7 @@ import android.widget.Toast;
 import com.example.mealplanner17.Adapters.IngredientsAdapter;
 
 import com.example.mealplanner17.Adapters.InstructionAdapter;
+import com.example.mealplanner17.Adapters.SideDishesAdapter;
 import com.example.mealplanner17.Listeners.RecipeDetailsListener;
 import com.example.mealplanner17.ModelsAPI.InstructionResponse;
 import com.example.mealplanner17.ModelsAPI.RecipeDetailsResponse;
@@ -56,6 +55,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_details);
+        APIgetRecipes = ApiCallForRecpies.getClient().create(ApiCallForRecpiesInterface.class);
 
         initObjects();
 
@@ -69,6 +69,12 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         dialog= new ProgressDialog(this);
         dialog.setTitle("Loading Details...");
         dialog.show();
+
+        Button buttonGenerateSideDishes = findViewById(R.id.button_generate_side_dishes);
+        buttonGenerateSideDishes.setOnClickListener(v -> generateSideDishes());
+
+
+
 
 
 
@@ -111,12 +117,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             Toast.makeText(RecipeDetailsActivity.this, message, Toast.LENGTH_SHORT).show();
         }
     };
-
-
-
-
-
-
     private void getInstructionsForRecipe(int id) {
         Call<List<InstructionResponse>> call = APIgetRecipes.getInstructions(id,API_KEY);
         call.enqueue(new Callback<List<InstructionResponse>>() {
@@ -139,5 +139,43 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                 Log.e(TAG, "onFailure: "+ t.getMessage());
             }
         });
+
     }
+    private void generateSideDishes() {
+        ProgressDialog dialog = new ProgressDialog(this);
+        dialog.setTitle("Loading Side Dishes...");
+        dialog.show();
+
+        ApiCallForRecpiesInterface APIgetRecipes = ApiCallForRecpies.getClient().create(ApiCallForRecpiesInterface.class);
+        Call<List<RecipeDetailsResponse>> call = APIgetRecipes.getRandomRecipes("side dish", API_KEY, 3);  // Fetch 3 random side dishes
+
+        call.enqueue(new Callback<List<RecipeDetailsResponse>>() {
+            @Override
+            public void onResponse(Call<List<RecipeDetailsResponse>> call, Response<List<RecipeDetailsResponse>> response) {
+                dialog.dismiss();
+                if (response.isSuccessful() && response.body() != null) {
+                    List<RecipeDetailsResponse> sideDishes = response.body();
+                    // Call a method to display the side dishes, e.g. updateSideDishesUI(sideDishes);
+                } else {
+                    Toast.makeText(RecipeDetailsActivity.this, "Failed to load side dishes", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<RecipeDetailsResponse>> call, Throwable t) {
+                dialog.dismiss();
+                Toast.makeText(RecipeDetailsActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+    private void updateSideDishesUI(List<RecipeDetailsResponse> sideDishes) {
+
+        RecyclerView sideDishesRecyclerView = findViewById(R.id.side_dishes_recycler_view);
+        SideDishesAdapter adapter = new SideDishesAdapter(this, sideDishes);
+        sideDishesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        sideDishesRecyclerView.setAdapter(adapter);
+    }
+
 }

@@ -76,6 +76,19 @@
                 android:layout_height="match_parent">
 
             </androidx.recyclerview.widget.RecyclerView>
+            <Button
+                android:id="@+id/button_generate_side_dishes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Generate Side Dishes"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/side_dishes_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical" />
 
 
 
