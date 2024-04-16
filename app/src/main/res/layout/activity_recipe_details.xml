@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/cyan"
+    tools:context=".API.RecipeDetailsActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView_meal_name"
+                android:text="@string/dish_name"
+                android:textSize="20sp"
+                android:padding="8dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/textView_meal_source"
+                android:text="@string/source"
+                android:textSize="14sp"
+                android:padding="8dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/imageView_meal_image"
+                android:layout_margin="8dp"
+                android:scaleType="centerCrop"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:contentDescription="@null"/>
+
+            <TextView
+                android:text="@string/ingredients"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:padding="8dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_meal_ingredients"
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!-- Dropdown trigger -->
+            <TextView
+                android:id="@+id/recipeDropdownTrigger"
+                android:text="@string/recipe"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:padding="8dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!-- Recipe steps in a collapsible layout -->
+            <LinearLayout
+                android:id="@+id/recipeStepsContainer"
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"> <!-- Initially hidden -->
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/stepList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <!-- Add side options below the recipe info -->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_side_options"
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

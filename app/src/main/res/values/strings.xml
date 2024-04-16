@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">MealPlanner17</string>
+    <string name="api_key">3ef8f95c17944ed6bac930281b8b453e</string>
+    <string name="meal_name">Meal Name</string>
+
+    <string name="like">like</string>
+    <string name="login">Login</string>
+    <string name="email">email</string>
+    <string name="Email">Email</string>
+    <string name="Password">Password</string>
+    <string name="Register">Register</string>
+    <string name="_2_people" />
+    <string name="Servings">Servings</string>
+    <string name="click_to_login">Click to Login</string>
+    <string name="click_to_register">Click to Register</string>
+
+    <string-array name="tags">
+        <item>main course</item>
+        <item>breakfast</item>
+        <item>appetizer</item>
+        <item>side dish</item>
+        <item>snack</item>
+        <item>salad</item>
+        <item>beverage</item>
+        <item>dessert</item>
+    </string-array>
+
+    <string-array name="breakfastTags">
+        <item>breakfast</item>
+        <item>vegetarian</item>
+        <item>vegan</item>
+        <item>gluten free</item>
+        <item>dairy</item>
+    </string-array>
+    <string-array name="breakfastTagsExclude">
+        <item>Dairy</item>
+        <item>Gluten</item>
+        <item>Peanut</item>
+        <item>Tree Nut</item>
+
+    </string-array>
+
+
+    <string name="account">Account</string>
+    <string name="home">Home</string>
+    <string name="discover_meals">Discover Meals</string>
+    <string name="menu">Menu</string>
+    <string name="dessert">dessert</string>
+    <string name="dish_name">Dish name</string>
+    <string name="source">Source</string>
+    <string name="summary">Summary</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="_1_pc">1 pc</string>
+    <string name="chicken">chicken</string>
+    <string name="similar_name">Similar Name</string>
+    <string name="similar_recipes">Similar Recipes</string>
+
+
+    <string name="hello_world">Hello World</string>
+    <string name="logout">Logout</string>
+    <string name="dinner">Dinner</string>
+    <string name="lunch">Lunch</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="first_name" />
+    <string name="enter_first_name">First Name\n</string>
+    <string name="enter_last_name">Last Name\n</string>
+    <string name="meal_planner">Meal Planner</string>
+    <string name="explore">Explore</string>
+    <string name="order_filter_by">Order Filter By:</string>
+    <string name="food_intolerance">Food Intolerance:</string>
+    <string name="filter_food_by">Filter Food by</string>
+    <string name="recipe">Recipe</string>
+    <string name="save">Save</string>
+    <string name="favorite">Favorite</string>
+
+    <string name="favorite_random_dishes">Favorite Random Dishes</string>
+    <string name="add_own_meal">Add Own Meal</string>
+    <string name="generate_random_dishes">Generate Random Dishes</string>
+
+
+</resources>
