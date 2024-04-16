@@ -51,7 +51,6 @@
         <!-- Add DinnerViewDataActivity here -->
         <activity android:name=".DinnerViewDataActivity" />
 
-
     </application>
 
 </manifest>
