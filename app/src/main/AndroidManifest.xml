@@ -42,6 +42,7 @@
         <activity android:name=".Breakfast.BreakfastActivity" />
         <activity android:name=".Breakfast.BreakfastGenerateActivity" />
         <activity android:name=".Breakfast.BreakfastFavoriteActivity" />
+        <activity android:name=".Breakfast.BreakfastSidesActivity" />
         <activity android:name=".LunchFavoriteActivity" />
         <activity android:name=".LunchGenerateActivity" />
         <activity android:name=".LunchActivity" />
@@ -50,6 +51,7 @@
         <activity android:name=".DinnerFavoriteActivity" />
         <!-- Add DinnerViewDataActivity here -->
         <activity android:name=".DinnerViewDataActivity" />
+
 
     </application>
 
