@@ -33,6 +33,7 @@
         <item>dairy</item>
     </string-array>
     <string-array name="breakfastTagsExclude">
+        <item> </item>
         <item>Dairy</item>
         <item>Gluten</item>
         <item>Peanut</item>
