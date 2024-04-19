@@ -76,27 +76,6 @@
                 android:layout_height="match_parent">
 
             </androidx.recyclerview.widget.RecyclerView>
-            <Button
-                android:id="@+id/button_breakfast_sides"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Breakfast Sides"
-                android:layout_marginTop="16dp"
-                android:layout_gravity="center" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Sides"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:paddingTop="16dp" />
-
-            <!-- Add a RecyclerView for displaying the sides -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/sides_recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
 
 

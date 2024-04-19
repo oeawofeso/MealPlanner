@@ -39,18 +39,6 @@
         <item>Tree Nut</item>
 
     </string-array>
-    <string-array name="breakfastDrinkTags">
-        <item>coffee</item>
-        <item>tea</item>
-        <item>juice</item>
-        <!-- Add other drink options here -->
-    </string-array>
-
-    <string-array name="breakfastDrinkTagsExclude">
-        <item>alcohol</item>
-        <item>soda</item>
-        <!-- Add other options to exclude here -->
-    </string-array>
 
 
     <string name="account">Account</string>

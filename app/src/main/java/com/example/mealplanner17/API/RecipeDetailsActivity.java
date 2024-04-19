@@ -13,24 +13,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.content.Intent;
+
 import com.example.mealplanner17.Adapters.IngredientsAdapter;
-import android.view.View;
+
 import com.example.mealplanner17.Adapters.InstructionAdapter;
-import com.example.mealplanner17.Adapters.RandomRecipeAdapter;
-import com.example.mealplanner17.Breakfast.BreakfastSidesActivity;
-import com.example.mealplanner17.Listeners.RandomRecipeResponseListener;
-import com.example.mealplanner17.Listeners.RecipeClickListener;
 import com.example.mealplanner17.Listeners.RecipeDetailsListener;
 import com.example.mealplanner17.ModelsAPI.InstructionResponse;
-import com.example.mealplanner17.ModelsAPI.RandomRecipeApiResponse;
-import com.example.mealplanner17.ModelsAPI.Recipe;
 import com.example.mealplanner17.ModelsAPI.RecipeDetailsResponse;
 import com.example.mealplanner17.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -54,9 +46,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
 
     private static final String TAG = "RecipeDetailsActivity";
     private final static String API_KEY = "3ef8f95c17944ed6bac930281b8b453e";
-
-    private RecyclerView sidesRecyclerView;
-    private RandomRecipeAdapter sidesAdapter;
     ApiCallForRecpiesInterface APIgetRecipes;
     List<InstructionResponse> recipeSteps;
 
@@ -67,36 +56,22 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_details);
-        sidesRecyclerView = findViewById(R.id.sides_recycler_view);
-        sidesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         initObjects();
-        Button breakfastSidesButton = findViewById(R.id.button_breakfast_sides);
+
         id=  Integer.parseInt(Objects.requireNonNull(getIntent().getStringExtra("id")));
         manager= new RequestManager(this);
         manager.getRecipeDetails(recipeDetailsListener,id);
 
         recipeStepsRecylerView = findViewById(R.id.stepList);
-        fetchAndDisplayDrinks();
-        sidesAdapter = new RandomRecipeAdapter(this, new ArrayList<>(), new RecipeClickListener() {
-            @Override
-            public void onRecipeClick(String recipeId) {
-                // Handle recipe click event
-                // You might open another activity or perform an action with the recipeId
-            }
-        });
+
 
         dialog= new ProgressDialog(this);
         dialog.setTitle("Loading Details...");
         dialog.show();
 
-        breakfastSidesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Create an Intent to start the BreakfastSidesActivity
-                Intent intent = new Intent(RecipeDetailsActivity.this, BreakfastSidesActivity.class);
-                startActivity(intent);
-            }
-        });
+
+
 
     }
 
@@ -136,6 +111,12 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             Toast.makeText(RecipeDetailsActivity.this, message, Toast.LENGTH_SHORT).show();
         }
     };
+
+
+
+
+
+
     private void getInstructionsForRecipe(int id) {
         Call<List<InstructionResponse>> call = APIgetRecipes.getInstructions(id,API_KEY);
         call.enqueue(new Callback<List<InstructionResponse>>() {
@@ -159,35 +140,4 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             }
         });
     }
-    private void fetchAndDisplayDrinks() {
-        // Create a RandomRecipeAdapter for the drinks
-        RandomRecipeAdapter drinksAdapter = new RandomRecipeAdapter(this, new ArrayList<>(), new RecipeClickListener() {
-            @Override
-            public void onRecipeClick(String recipeId) {
-                // Handle recipe click event (e.g., open another activity)
-            }
-        });
-
-        // Set up the RecyclerView for drinks
-        sidesRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        sidesRecyclerView.setAdapter(drinksAdapter);
-
-        // Call the static method from BreakfastSidesActivity to fetch and display drinks
-        BreakfastSidesActivity.fetchAndDisplayDrinks(this, drinksAdapter, new RandomRecipeResponseListener() {
-            @Override
-            public void didFetch(RandomRecipeApiResponse response, String message) {
-                // Update the adapter with the fetched drinks recipes
-                drinksAdapter.updateData(response.recipes);
-            }
-
-            @Override
-            public void didError(String message) {
-                Toast.makeText(RecipeDetailsActivity.this, message, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-
-
-
 }
