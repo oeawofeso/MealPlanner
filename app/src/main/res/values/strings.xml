@@ -88,6 +88,7 @@
     <string name="favorite_random_dishes">Favorite Random Dishes</string>
     <string name="add_own_meal">Add Own Meal</string>
     <string name="generate_random_dishes">Generate Random Dishes</string>
+    <string name="side_dish">Side Dish</string>
 
 
 </resources>

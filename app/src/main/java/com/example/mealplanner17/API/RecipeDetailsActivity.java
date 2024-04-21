@@ -20,6 +20,7 @@ import com.example.mealplanner17.Adapters.IngredientsAdapter;
 
 import com.example.mealplanner17.Adapters.InstructionAdapter;
 import com.example.mealplanner17.Adapters.RandomRecipeAdapter;
+import com.example.mealplanner17.Breakfast.BreakfastGenerateActivity;
 import com.example.mealplanner17.Breakfast.BreakfastSidesActivity;
 import com.example.mealplanner17.Listeners.RandomRecipeResponseListener;
 import com.example.mealplanner17.Listeners.RecipeClickListener;
@@ -169,6 +170,8 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             @Override
             public void onRecipeClick(String recipeId) {
                 // Handle recipe click event (e.g., open another activity)
+                startActivity(new Intent(RecipeDetailsActivity.this, RecipeDetailsActivity.class)
+                        .putExtra("id", recipeId));
             }
         });
 
@@ -190,5 +193,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 }
