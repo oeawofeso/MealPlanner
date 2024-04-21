@@ -92,6 +92,12 @@ public class RandomRecipeAdapter extends RecyclerView.Adapter<RandomRecipeViewHo
         editor.apply();
         btnFavorite.setSelected(!btnFavorite.isSelected());
     }
+    public void updateData(List<Recipe> newData) {
+        this.list.clear();
+        this.list.addAll(newData);
+        notifyDataSetChanged();
+    }
+
 }
 class RandomRecipeViewHolder extends RecyclerView.ViewHolder{
    CardView random_list_container;

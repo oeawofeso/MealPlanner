@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         Button breakfastButton = findViewById(R.id.breakfast_button);
         Button lunchButton = findViewById(R.id.lunch_button);
         Button dinnerButton = findViewById(R.id.dinner_button);
+        Button profileButton = findViewById(R.id.profile_button);
 
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyFavoriteMeals", Context.MODE_PRIVATE);
@@ -121,6 +122,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DinnerActivity.class);
+                startActivity(intent);
+            }
+        });
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(intent);
             }
         });
