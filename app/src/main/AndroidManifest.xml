@@ -50,15 +50,15 @@
 
             <!-- intent filters if any -->
         </activity>
-        <activity android:name=".LunchActivities.LunchFavoriteActivity">
+        <activity android:name=".LunchFavoriteActivity">
 
             <!-- intent filters if any -->
         </activity>
-        <activity android:name=".LunchActivities.LunchGenerateActivity">
+        <activity android:name=".LunchGenerateActivity">
 
             <!-- intent filters if any -->
         </activity>
-        <activity android:name=".LunchActivities.LunchActivity">
+        <activity android:name=".LunchActivity">
 
             <!-- intent filters if any -->
         </activity>

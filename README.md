@@ -1,15 +1,15 @@
 # MealPlanner
 
 Login/Register Page
-![img.png](loginRegister.png)
+![img.png](PicturesReadMe/loginRegister.png)
 
 Home/Main page 
-![img_1.png](homePage.png)
+![img_1.png](PicturesReadMe/homePage.png)
 
 Generate Breakfast
-![img_4.png](generateBreakfast.png)
+![img_4.png](PicturesReadMe/generateBreakfast.png)
 
 Dish details
-![img.png](dishDetails.png)
+![img.png](PicturesReadMe/dishDetails.png)
 
 

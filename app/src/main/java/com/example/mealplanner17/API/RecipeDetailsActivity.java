@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,12 +19,19 @@ import android.widget.Toast;
 import com.example.mealplanner17.Adapters.IngredientsAdapter;
 
 import com.example.mealplanner17.Adapters.InstructionAdapter;
+import com.example.mealplanner17.Adapters.RandomRecipeAdapter;
+import com.example.mealplanner17.Breakfast.BreakfastGenerateActivity;
+import com.example.mealplanner17.Breakfast.BreakfastSidesActivity;
+import com.example.mealplanner17.Listeners.RandomRecipeResponseListener;
+import com.example.mealplanner17.Listeners.RecipeClickListener;
 import com.example.mealplanner17.Listeners.RecipeDetailsListener;
 import com.example.mealplanner17.ModelsAPI.InstructionResponse;
+import com.example.mealplanner17.ModelsAPI.RandomRecipeApiResponse;
 import com.example.mealplanner17.ModelsAPI.RecipeDetailsResponse;
 import com.example.mealplanner17.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -41,6 +50,11 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     IngredientsAdapter ingredientsAdapter;
     Button btnFavorite;
 
+    Button nextRecipeButton;
+    RecyclerView randomMealsRecyclerView;
+    RecyclerView sidesRecyclerView;
+    RandomRecipeAdapter randomRecipeAdapter;
+
 
 
 
@@ -52,11 +66,14 @@ public class RecipeDetailsActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_details);
-
+        nextRecipeButton = findViewById(R.id.button_next_recipe);
+        Button nextRecipeButton = findViewById(R.id.button_next_recipe);
+        nextRecipeButton.setVisibility(View.GONE);
         initObjects();
 
         id=  Integer.parseInt(Objects.requireNonNull(getIntent().getStringExtra("id")));
@@ -69,10 +86,15 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         dialog= new ProgressDialog(this);
         dialog.setTitle("Loading Details...");
         dialog.show();
+        nextRecipeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to the BreakfastSidesActivity
+                startActivity(new Intent(RecipeDetailsActivity.this, BreakfastSidesActivity.class));
+            }
+        });
+        fetchAndDisplayDrinks();
 
-        SharedPreferences sharedPreferences = getSharedPreferences("MyFavoriteMeals", Context.MODE_PRIVATE);
-        boolean isFavorite = sharedPreferences.getBoolean(String.valueOf(id), false);
-        btnFavorite.setSelected(isFavorite);
 
 
     }
@@ -81,11 +103,11 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     private void initObjects() {
         textView_meal_name = findViewById(R.id.textView_meal_name);
         textView_meal_source = findViewById(R.id.textView_meal_source);
-        btnFavorite = findViewById(R.id.btn_favorite);
+
         imageView_meal_image= findViewById(R.id.imageView_meal_image);
         imageView_ingredients = findViewById(R.id.imageView_ingredients);
         recycler_meal_ingredients= findViewById(R.id.recycler_meal_ingredients);
-
+        sidesRecyclerView = findViewById(R.id.sides_recycler_view);
     }
     private final RecipeDetailsListener recipeDetailsListener = new RecipeDetailsListener() {
         @Override
@@ -142,4 +164,36 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             }
         });
     }
+    private void fetchAndDisplayDrinks() {
+        // Create a RandomRecipeAdapter for the drinks
+        RandomRecipeAdapter drinksAdapter = new RandomRecipeAdapter(this, new ArrayList<>(), new RecipeClickListener() {
+            @Override
+            public void onRecipeClick(String recipeId) {
+                // Handle recipe click event (e.g., open another activity)
+                startActivity(new Intent(RecipeDetailsActivity.this, RecipeDetailsActivity.class)
+                        .putExtra("id", recipeId));
+            }
+        });
+
+        // Set up the RecyclerView for drinks
+        sidesRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        sidesRecyclerView.setAdapter(drinksAdapter);
+
+        // Call the static method from BreakfastSidesActivity to fetch and display drinks
+        BreakfastSidesActivity.fetchAndDisplayDrinks(this, drinksAdapter, new RandomRecipeResponseListener() {
+            @Override
+            public void didFetch(RandomRecipeApiResponse response, String message) {
+                // Update the adapter with the fetched drinks recipes
+                drinksAdapter .updateData(response.recipes);
+            }
+
+            @Override
+            public void didError(String message) {
+                Toast.makeText(RecipeDetailsActivity.this, message, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
 }
