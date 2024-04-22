@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mealplanner17.Auth.Login;
 import com.example.mealplanner17.Breakfast.BreakfastActivity;
+import com.example.mealplanner17.LunchActivities.LunchActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

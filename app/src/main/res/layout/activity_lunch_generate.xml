@@ -1,18 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:orientation="vertical"
+    android:background="@color/orange"
+    android:padding="16dp"
+    tools:context=".BrowseMeals">
 
-    <!-- Add EditText widget for user input -->
-    <EditText
-        android:id="@+id/editText"
+    <!-- Header Container -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Sandwich"
-        android:layout_marginBottom="16dp"
-        android:inputType="text"/>
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="5dp">
 
-    <!-- Add your UI elements here -->
+        <!-- Discover Meals TextView -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/browse_meals"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
 
-</RelativeLayout>
+    </LinearLayout>
+
+<!--    Food Intolerance Spinner-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/food_intolerance"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/allergen_spinner"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"/>
+
+    </LinearLayout>
+
+    <!-- Order Filter By Spinner -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_food_by"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center_vertical"/>
+
+        <Spinner
+            android:id="@+id/filter_spinner"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"/>
+    </LinearLayout>
+
+    <!-- RecyclerView/Dynamic View Changes based on User's input -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_marginTop="50dp"
+        android:clipToPadding="false"
+        android:padding="16dp" />
+
+
+</LinearLayout>
+
+
+
+
+<!--<RadioGroup-->
+<!--android:id="@+id/radioGroup"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:orientation="vertical">-->
+
+<!--<RadioButton-->
+<!--    android:id="@+id/radioButton2"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:text="Gluten" />-->
+
+<!--<RadioButton-->
+<!--    android:id="@+id/radioButton3"-->
+<!--    android:layout_width="112dp"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:text="Tree Nut" />-->
+
+<!--<RadioButton-->
+<!--    android:id="@+id/radioButton4"-->
+<!--    android:layout_width="112dp"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:text="Peanut" />-->
+
+<!--<RadioButton-->
+<!--    android:id="@+id/radioButton1"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:text="Dairy" />-->
+
+<!--</RadioGroup>-->
+
+
+
+
+
+
+
+
+
+
+
+    <!--    &lt;!&ndash; Food Intolerance Spinner &ndash;&gt;-->
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:layout_marginTop="10dp">-->
+
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="@string/food_intolerance"-->
+    <!--            android:textSize="18sp"-->
+    <!--            android:textColor="@android:color/white"-->
+    <!--            android:layout_gravity="center_vertical"/>-->
+
+    <!--        <Spinner-->
+    <!--            android:id="@+id/spinner_tags2"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginStart="16dp"/>-->
+    <!--    </LinearLayout>-->
+
+
+    <!--    &lt;!&ndash; Order Filter By Spinner &ndash;&gt;-->
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:layout_marginTop="16dp">-->
+
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="@string/filter_food_by"-->
+    <!--            android:textSize="18sp"-->
+    <!--            android:textColor="@android:color/white"-->
+    <!--            android:layout_gravity="center_vertical"/>-->
+
+    <!--        <Spinner-->
+    <!--            android:id="@+id/spinner_tags"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginStart="16dp"/>-->
+    <!--    </LinearLayout>-->
+    <!--    Order Filter By Spinner-->
+
+    <!-- RecyclerView -->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/recycler_random"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="286dp"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:layout_marginBottom="5dp"-->
+<!--        android:layout_weight="1"-->
+<!--        android:textColor="@android:color/white">-->
+
+<!--    </androidx.recyclerview.widget.RecyclerView>-->
+
+
+
+
+
+
+
+    <!--    -->
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:padding="16dp">-->
+
+
+
+<!--</RelativeLayout>-->

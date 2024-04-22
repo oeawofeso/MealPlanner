@@ -59,7 +59,6 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
         dialog.setTitle("Loading");
 
 
-
         spinner = findViewById(R.id.spinner_tags);
         ArrayAdapter arrayAdapter= ArrayAdapter.createFromResource(this, R.array.breakfastTags, R.layout.spinner_text);
         arrayAdapter.setDropDownViewResource(R.layout.spinner_inner_text);
@@ -79,14 +78,8 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
 
         breakfastTagsExclude.clear();
         breakfastTagsExclude.add("breakfast");
-         manager.getRandomRecipes(randomRecipeResponseListener, breakfastTags,breakfastTagsExclude);
-          dialog.show();
-
-
-
-
-
-
+        manager.getRandomRecipes(randomRecipeResponseListener, breakfastTags,breakfastTagsExclude);
+        dialog.show();
     }
 
     private final RandomRecipeResponseListener randomRecipeResponseListener=new RandomRecipeResponseListener() {

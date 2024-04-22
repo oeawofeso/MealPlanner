@@ -1,4 +1,4 @@
-package com.example.mealplanner17;
+package com.example.mealplanner17.LunchActivities;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.mealplanner17.R;
+import com.example.mealplanner17.RecipeDatabaseHelper;
 
 public class LunchFavoriteActivity extends AppCompatActivity {
     private EditText mealNameEditText;
