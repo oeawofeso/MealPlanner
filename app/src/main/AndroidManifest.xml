@@ -74,6 +74,10 @@
 
             <!-- intent filters if any -->
         </activity>
+        <activity android:name=".ProfileActivity">
+
+            <!-- intent filters if any -->
+        </activity>
     </application>
 
 </manifest>
