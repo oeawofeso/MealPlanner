@@ -1,54 +1,40 @@
-package com.example.mealplanner17;
+package com.example.mealplanner17.LunchActivities;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class MealDatabaseHelper extends SQLiteOpenHelper {
+public class LunchMealDatabaseHelper extends SQLiteOpenHelper {
     // Define constants for database name, version, and table names
-    private static final String DATABASE_NAME = "mealplanner.db";
+    private static final String DATABASE_NAME = "lunchmealplanner.db";
     private static final int DATABASE_VERSION = 1;
 
-    // Define columns for all tables
+    // Define columns for lunch table
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_MEAL_NAME = "meal_name";
     public static final String COLUMN_INGREDIENTS = "ingredients";
     public static final String COLUMN_COOKING_INSTRUCTIONS = "cooking_instructions";
 
-    // Table names for breakfast, lunch, and dinner
-    public static final String TABLE_BREAKFAST = "breakfast";
-    public static final String TABLE_LUNCH = "lunch"; // Added lunch table
-    public static final String TABLE_DINNER = "dinner";
+    // Table name for lunch
+    public static final String TABLE_LUNCH = "lunch";
 
-    // Database creation SQL statements for each table
-    private static final String DATABASE_CREATE_BREAKFAST = "CREATE TABLE "
-            + TABLE_BREAKFAST + "(" + COLUMN_ID
-            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_MEAL_NAME
-            + " TEXT NOT NULL, " + COLUMN_INGREDIENTS + " TEXT NOT NULL, "
-            + COLUMN_COOKING_INSTRUCTIONS + " TEXT NOT NULL);";
-
+    // Database creation SQL statement for the lunch table
     private static final String DATABASE_CREATE_LUNCH = "CREATE TABLE "
             + TABLE_LUNCH + "(" + COLUMN_ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_MEAL_NAME
             + " TEXT NOT NULL, " + COLUMN_INGREDIENTS + " TEXT NOT NULL, "
-            + COLUMN_COOKING_INSTRUCTIONS + " TEXT NOT NULL);"; // Added lunch table creation SQL
-
-    private static final String DATABASE_CREATE_DINNER = "CREATE TABLE "
-            + TABLE_DINNER + "(" + COLUMN_ID
-            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_MEAL_NAME
-            + " TEXT NOT NULL, " + COLUMN_INGREDIENTS + " TEXT NOT NULL, "
             + COLUMN_COOKING_INSTRUCTIONS + " TEXT NOT NULL);";
 
-    public MealDatabaseHelper(Context context) {
+    public LunchMealDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase database) {
-        database.execSQL(DATABASE_CREATE_BREAKFAST);
-        database.execSQL(DATABASE_CREATE_LUNCH); // Execute SQL for creating lunch table
-        database.execSQL(DATABASE_CREATE_DINNER);
+    public void onCreate(SQLiteDatabase db) {
+        // Create the lunch table
+        db.execSQL(DATABASE_CREATE_LUNCH);
     }
 
     @Override
@@ -56,8 +42,19 @@ public class MealDatabaseHelper extends SQLiteOpenHelper {
         // Upgrade logic, if needed
     }
 
-    // Method to get all lunch meals from the database
-    public Cursor getAllLunchMeals() {
+    // Method to insert a lunch meal into the database
+    public void insertLunch(String mealName, String ingredients, String cookingInstructions) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_MEAL_NAME, mealName);
+        values.put(COLUMN_INGREDIENTS, ingredients);
+        values.put(COLUMN_COOKING_INSTRUCTIONS, cookingInstructions);
+        db.insert(TABLE_LUNCH, null, values);
+        db.close();
+    }
+
+    // Method to retrieve all lunch data from the database
+    public Cursor getAllLunchData() {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.query(TABLE_LUNCH, null, null, null, null, null, null);
     }

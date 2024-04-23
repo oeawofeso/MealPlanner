@@ -1,4 +1,4 @@
-package com.example.mealplanner17;
+package com.example.mealplanner17.LunchActivities;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -7,33 +7,34 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.mealplanner17.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class DinnerViewDataActivity extends AppCompatActivity {
+public class LunchViewDataActivity extends AppCompatActivity {
 
-    DBHelper dbHelper;
+    LunchDBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dinner_view_data);
+        setContentView(R.layout.activity_lunch_view_data);
 
-        dbHelper = new DBHelper(this);
+        dbHelper = new LunchDBHelper(this);
 
-        displayDinnerData();
+        displayLunchData();
     }
 
-    private void displayDinnerData() {
+    private void displayLunchData() {
         TextView textViewData = findViewById(R.id.textViewData);
 
-        Cursor cursor = dbHelper.getAllDinnerDataWithIndex(); // Use method with index
+        Cursor cursor = dbHelper.getAllLunchDataWithIndex(); // Use method with index
 
         StringBuilder stringBuilder = new StringBuilder();
         if (cursor != null && cursor.moveToFirst()) {
             int index = 1; // Start index from 1
             do {
-                int indexMealName = cursor.getColumnIndex("food_name");
+                int indexMealName = cursor.getColumnIndex("meal_name");
                 int indexIngredients = cursor.getColumnIndex("ingredients");
                 int indexInstructions = cursor.getColumnIndex("cooking_instructions");
                 int indexId = cursor.getColumnIndex("_id"); // Added index for _id column
@@ -42,11 +43,11 @@ public class DinnerViewDataActivity extends AppCompatActivity {
                     String mealName = cursor.getString(indexMealName);
                     String ingredients = cursor.getString(indexIngredients);
                     String instructions = cursor.getString(indexInstructions);
-                    long dinnerEntryId = cursor.getLong(indexId);
-                    Log.d("DinnerViewDataActivity", "_id: " + dinnerEntryId);
-                    Log.d("DinnerViewDataActivity", "Meal Name: " + mealName);
-                    Log.d("DinnerViewDataActivity", "Ingredients: " + ingredients);
-                    Log.d("DinnerViewDataActivity", "Cooking Instructions: " + instructions);
+                    long lunchEntryId = cursor.getLong(indexId);
+                    Log.d("LunchViewDataActivity", "_id: " + lunchEntryId);
+                    Log.d("LunchViewDataActivity", "Meal Name: " + mealName);
+                    Log.d("LunchViewDataActivity", "Ingredients: " + ingredients);
+                    Log.d("LunchViewDataActivity", "Cooking Instructions: " + instructions);
 
                     stringBuilder.append("Index: ").append(index).append("\n"); // Append index
                     stringBuilder.append("Meal Name: ").append(mealName).append("\n");
@@ -54,12 +55,12 @@ public class DinnerViewDataActivity extends AppCompatActivity {
                     stringBuilder.append("Cooking Instructions: ").append(instructions).append("\n\n");
                     index++; // Increment index
                 } else {
-                    Log.e("DinnerViewDataActivity", "Column index not found.");
+                    Log.e("LunchViewDataActivity", "Column index not found.");
                 }
             } while (cursor.moveToNext());
             cursor.close();
         } else {
-            Log.e("DinnerViewDataActivity", "Cursor is null or empty.");
+            Log.e("LunchViewDataActivity", "Cursor is null or empty.");
             stringBuilder.append("No data available.");
         }
 
@@ -72,8 +73,8 @@ public class DinnerViewDataActivity extends AppCompatActivity {
         String indexStr = editTextIndexToDelete.getText().toString();
         if (!indexStr.isEmpty()) {
             int index = Integer.parseInt(indexStr);
-            dbHelper.deleteDinnerMealByIndex(index);
-            displayDinnerData(); // Refresh displayed data after deletion
+            dbHelper.deleteLunchMealByIndex(index);
+            displayLunchData(); // Refresh displayed data after deletion
         } else {
             Toast.makeText(this, "Please enter an index to delete", Toast.LENGTH_SHORT).show();
         }

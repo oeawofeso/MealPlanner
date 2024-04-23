@@ -1,12 +1,11 @@
 package com.example.mealplanner17.LunchActivities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import com.example.mealplanner17.R;
+import androidx.appcompat.app.AppCompatActivity;
+import com.example.mealplanner17.R; // Add this import statement
 
 public class LunchActivity extends AppCompatActivity {
 
@@ -15,10 +14,11 @@ public class LunchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lunch);
 
-        Button button1 = findViewById(R.id.button1);
-        Button button2 = findViewById(R.id.button2);
-        Button button3 = findViewById(R.id.button3);
-        button1.setOnClickListener(new View.OnClickListener() {
+        Button buttonGenerateLunch = findViewById(R.id.buttonGenerateLunch);
+        Button buttonAddFavoriteLunch = findViewById(R.id.buttonAddFavoriteLunch);
+        Button buttonViewData = findViewById(R.id.buttonViewData); // Reference to the view data button
+
+        buttonGenerateLunch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LunchActivity.this, LunchGenerateActivity.class);
@@ -26,8 +26,7 @@ public class LunchActivity extends AppCompatActivity {
             }
         });
 
-
-        button2.setOnClickListener(new View.OnClickListener() {
+        buttonAddFavoriteLunch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LunchActivity.this, LunchFavoriteActivity.class);
@@ -35,14 +34,13 @@ public class LunchActivity extends AppCompatActivity {
             }
         });
 
-        button3.setOnClickListener(new View.OnClickListener() {
+        buttonViewData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LunchActivity.this, FavoriteRandomLunchActivity.class);
+                // Start LunchViewDataActivity to view the data
+                Intent intent = new Intent(LunchActivity.this, LunchViewDataActivity.class);
                 startActivity(intent);
             }
         });
-
-
     }
 }

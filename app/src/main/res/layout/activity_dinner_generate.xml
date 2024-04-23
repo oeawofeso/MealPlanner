@@ -4,15 +4,84 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- Add EditText widget for user input -->
-    <EditText
-        android:id="@+id/editText"
+    <!-- Header Container -->
+    <LinearLayout
+        android:id="@+id/headerContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Steak"
-        android:layout_marginBottom="16dp"
-        android:inputType="text"/>
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="5dp">
 
-    <!-- Add your UI elements here -->
+        <!-- Discover Meals TextView -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/discover_meals"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+
+    </LinearLayout>
+
+    <!-- Food Intolerance Spinner -->
+    <LinearLayout
+        android:id="@+id/foodIntoleranceContainer"
+        android:layout_below="@id/headerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/food_intolerance"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center_vertical"/>
+
+        <Spinner
+            android:id="@+id/spinner_tags2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"/>
+    </LinearLayout>
+
+    <!-- Order Filter By Spinner -->
+    <LinearLayout
+        android:id="@+id/orderFilterContainer"
+        android:layout_below="@id/foodIntoleranceContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_food_by"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center_vertical"/>
+
+        <Spinner
+            android:id="@+id/spinner_tags"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"/>
+    </LinearLayout>
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_random"
+        android:layout_below="@id/orderFilterContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:padding="16dp"
+        android:clipToPadding="false" />
 
 </RelativeLayout>

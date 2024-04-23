@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DinnerActivity extends AppCompatActivity {
 
@@ -37,17 +37,10 @@ public class DinnerActivity extends AppCompatActivity {
         buttonViewData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    // Start DinnerViewDataActivity to view the data
-                    Intent intent = new Intent(DinnerActivity.this, DinnerViewDataActivity.class);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    // Handle the exception, such as showing an error message to the user
-                    Toast.makeText(DinnerActivity.this, "An error occurred", Toast.LENGTH_SHORT).show();
-                }
+                // Start DinnerViewDataActivity to view the data
+                Intent intent = new Intent(DinnerActivity.this, DinnerViewDataActivity.class);
+                startActivity(intent);
             }
         });
-
     }
 }

@@ -73,6 +73,19 @@
 
 
     </string-array>
+    <string-array name="dinnerTags">
+        <item>Chicken</item>
+        <item>Salmon</item>
+        <item>Pasta</item>
+        <item>Rice</item>
+
+    </string-array>
+    <string-array name="dinnerTagsExclude">
+        <item>Meat</item>
+        <item>Seafood</item>
+        <item>Nuts</item>
+        <!-- Add more exclude tags as needed -->
+    </string-array>
 
     <string name="account">Account</string>
     <string name="home">Home</string>

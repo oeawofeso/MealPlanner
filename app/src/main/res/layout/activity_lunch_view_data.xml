@@ -21,6 +21,12 @@
             android:text="Placeholder Text" />
 
         <!-- Button to delete the meal -->
+        <Button
+            android:id="@+id/btnDeleteMeal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:onClick="onDeleteButtonClick" />
 
     </LinearLayout>
 

@@ -2,30 +2,60 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/lunch_background"
-    android:padding="16dp">
+    android:background="@drawable/main_backdrop"
+    android:padding="45dp"
+    android:gravity="center">
 
-    <Button
-        android:id="@+id/button1"
+    <!-- ListView to display lunch recipes -->
+    <ListView
+        android:id="@+id/listViewRecipes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/generate_random_lunch_meals"
+        android:layout_above="@id/buttonViewData"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/buttonGenerateLunch" />
+
+    <!-- Button to generate lunch -->
+    <Button
+        android:id="@+id/buttonGenerateLunch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="16dp"
+        android:text="Generate" />
 
+    <!-- Button to add favorite lunch -->
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonAddFavoriteLunch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button1"
-        android:layout_marginTop="4dp"
-        android:text="@string/add_ownMeal" />
+        android:layout_below="@id/buttonGenerateLunch"
+        android:layout_alignStart="@id/buttonGenerateLunch"
+        android:layout_alignEnd="@id/buttonGenerateLunch"
+        android:layout_marginTop="16dp"
+        android:text="Add your lunch" />
 
+    <!-- Button for favorite random lunch dishes -->
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonFavoriteRandomLunchDishes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button1"
-        android:layout_marginTop="54dp"
-        android:text="@string/view_your_liked_dishes" />
+        android:layout_below="@id/buttonAddFavoriteLunch"
+        android:layout_alignStart="@id/buttonGenerateLunch"
+        android:layout_alignEnd="@id/buttonGenerateLunch"
+        android:layout_marginTop="16dp"
+        android:text="Favorite Random Dishes" />
+
+    <!-- Button to view lunch data -->
+    <Button
+        android:id="@+id/buttonViewData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonFavoriteRandomLunchDishes"
+        android:layout_alignStart="@id/buttonGenerateLunch"
+        android:layout_alignEnd="@id/buttonGenerateLunch"
+        android:layout_marginTop="16dp"
+        android:text="View Data" />
+
 </RelativeLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="ExtraText">
+    package="com.example.mealplanner17">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -38,45 +38,45 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Breakfast.BreakfastActivity">
-
-            <!-- intent filters if any -->
+        <activity
+            android:name=".Breakfast.BreakfastActivity">
         </activity>
-        <activity android:name=".Breakfast.BreakfastGenerateActivity">
-
-            <!-- intent filters if any -->
+        <activity
+            android:name=".Breakfast.BreakfastGenerateActivity">
         </activity>
-        <activity android:name=".Breakfast.BreakfastFavoriteActivity">
-
-            <!-- intent filters if any -->
+        <activity
+            android:name=".Breakfast.BreakfastFavoriteActivity">
         </activity>
-        <activity android:name=".LunchActivities.LunchFavoriteActivity">
-
-            <!-- intent filters if any -->
+        <activity
+            android:name=".LunchActivities.LunchFavoriteActivity">
         </activity>
-        <activity android:name=".LunchActivities.LunchGenerateActivity">
-
-            <!-- intent filters if any -->
+        <activity
+            android:name=".LunchActivities.LunchGenerateActivity">
         </activity>
-        <activity android:name=".LunchActivities.LunchActivity">
-
-            <!-- intent filters if any -->
+        <activity
+            android:name=".LunchActivities.LunchActivity">
         </activity>
-        <activity android:name=".DinnerActivity">
-
-            <!-- intent filters if any -->
+        <activity
+            android:name=".DinnerActivity">
         </activity>
-        <activity android:name=".DinnerGenerateActivity">
-
-            <!-- intent filters if any -->
+        <activity
+            android:name=".DinnerGenerateActivity">
         </activity>
-        <activity android:name=".DinnerFavoriteActivity">
-
-            <!-- intent filters if any -->
+        <activity
+            android:name=".DinnerFavoriteActivity">
         </activity>
-        <activity android:name=".ProfileActivity">
+        <activity
+            android:name=".DinnerViewDataActivity"
+            android:exported="false">
+        </activity>
 
-            <!-- intent filters if any -->
+        <activity
+            android:name=".LunchActivities.LunchViewDataActivity">
+        </activity>
+
+
+        <activity
+            android:name=".ProfileActivity">
         </activity>
     </application>
 

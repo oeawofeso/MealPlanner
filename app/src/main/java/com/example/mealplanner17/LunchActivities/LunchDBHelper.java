@@ -1,4 +1,5 @@
-package com.example.mealplanner17;
+package com.example.mealplanner17.LunchActivities;
+
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,32 +8,32 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DBHelper extends SQLiteOpenHelper {
+public class LunchDBHelper extends SQLiteOpenHelper {
 
-    public DBHelper(Context context) {
-        super(context, "userinputdata.db", null, 1);
+    public LunchDBHelper(Context context) {
+        super(context, "userinputdatalunch.db", null, 1);
     }
 
-    public void insertDinner(String foodName, String ingredients, String cookingInstructions) {
+    public void insertLunch(String mealName, String ingredients, String cookingInstructions) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("food_name", foodName);
+        values.put("meal_name", mealName);
         values.put("ingredients", ingredients);
         values.put("cooking_instructions", cookingInstructions);
-        long newRowId = db.insert("dinner_table", null, values);
+        long newRowId = db.insert("lunch_table", null, values);
         if (newRowId != -1) {
-            Log.d("DBHelper", "Dinner data inserted successfully!");
+            Log.d("LunchDBHelper", "Lunch data inserted successfully!");
         } else {
-            Log.e("DBHelper", "Error inserting dinner data into database!");
+            Log.e("LunchDBHelper", "Error inserting lunch data into database!");
         }
         db.close();
     }
 
-    public Cursor getAllDinnerDataWithIndex() {
+    public Cursor getAllLunchDataWithIndex() {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] projection = {
                 "_id",
-                "food_name",
+                "meal_name",
                 "ingredients",
                 "cooking_instructions"
         };
@@ -40,7 +41,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String[] selectionArgs = null;
         String sortOrder = null;
         Cursor cursor = db.query(
-                "dinner_table",
+                "lunch_table",
                 projection,
                 selection,
                 selectionArgs,
@@ -53,9 +54,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableSQL = "CREATE TABLE dinner_table (" +
+        String createTableSQL = "CREATE TABLE lunch_table (" +
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "food_name TEXT," +
+                "meal_name TEXT," +
                 "ingredients TEXT," +
                 "cooking_instructions TEXT)";
         db.execSQL(createTableSQL);
@@ -63,14 +64,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS dinner_table");
+        db.execSQL("DROP TABLE IF EXISTS lunch_table");
         onCreate(db);
     }
 
-    // Method to delete a dinner meal from the database by index
-    public void deleteDinnerMealByIndex(int index) {
+    // Method to delete a lunch meal from the database by index
+    public void deleteLunchMealByIndex(int index) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT _id FROM dinner_table LIMIT 1 OFFSET ?", new String[]{String.valueOf(index - 1)});
+        Cursor cursor = db.rawQuery("SELECT _id FROM lunch_table LIMIT 1 OFFSET ?", new String[]{String.valueOf(index - 1)});
         long id = -1;
         if (cursor.moveToFirst()) {
             int idColumnIndex = cursor.getColumnIndexOrThrow("_id");
@@ -79,10 +80,10 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
 
         if (id != -1) {
-            db.delete("dinner_table", "_id = ?", new String[]{String.valueOf(id)});
-            Log.d("DBHelper", "Dinner data deleted successfully!");
+            db.delete("lunch_table", "_id = ?", new String[]{String.valueOf(id)});
+            Log.d("LunchDBHelper", "Lunch data deleted successfully!");
         } else {
-            Log.e("DBHelper", "Error deleting dinner data from database!");
+            Log.e("LunchDBHelper", "Error deleting lunch data from database!");
         }
         db.close();
     }

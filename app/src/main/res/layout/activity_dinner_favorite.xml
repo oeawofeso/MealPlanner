@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextMealName"
         android:hint="Ingredients"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="32dp"/>
 
     <!-- EditText for Cooking Instructions -->
     <EditText
