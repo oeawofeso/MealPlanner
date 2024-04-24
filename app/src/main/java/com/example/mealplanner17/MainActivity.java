@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyFavoriteMeals", Context.MODE_PRIVATE);
-        sharedPreferences.edit().clear().apply();
+        //sharedPreferences.edit().clear().apply();
 
 
 
