@@ -25,34 +25,35 @@
         android:layout_marginBottom="16dp"
         android:text="Generate" />
 
-    <!-- Button to add favorite lunch -->
-    <Button
-        android:id="@+id/buttonAddFavoriteLunch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/buttonGenerateLunch"
-        android:layout_alignStart="@id/buttonGenerateLunch"
-        android:layout_alignEnd="@id/buttonGenerateLunch"
-        android:layout_marginTop="16dp"
-        android:text="Add your lunch" />
 
     <!-- Button for favorite random lunch dishes -->
     <Button
         android:id="@+id/buttonFavoriteRandomLunchDishes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonAddFavoriteLunch"
+        android:layout_below="@id/buttonGenerateLunch"
         android:layout_alignStart="@id/buttonGenerateLunch"
         android:layout_alignEnd="@id/buttonGenerateLunch"
         android:layout_marginTop="16dp"
         android:text="Favorite Random Dishes" />
+
+    <!-- Button to add favorite lunch -->
+    <Button
+        android:id="@+id/buttonAddFavoriteLunch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonFavoriteRandomLunchDishes"
+        android:layout_alignStart="@id/buttonGenerateLunch"
+        android:layout_alignEnd="@id/buttonGenerateLunch"
+        android:layout_marginTop="16dp"
+        android:text="Add your lunch" />
 
     <!-- Button to view lunch data -->
     <Button
         android:id="@+id/buttonViewData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonFavoriteRandomLunchDishes"
+        android:layout_below="@id/buttonAddFavoriteLunch"
         android:layout_alignStart="@id/buttonGenerateLunch"
         android:layout_alignEnd="@id/buttonGenerateLunch"
         android:layout_marginTop="16dp"

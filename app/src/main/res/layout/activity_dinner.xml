@@ -25,34 +25,35 @@
         android:layout_marginBottom="16dp"
         android:text="Generate" />
 
-    <!-- Button to add favorite dinner -->
-    <Button
-        android:id="@+id/buttonAddFavoriteDinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/buttonGenerateDinner"
-        android:layout_alignStart="@id/buttonGenerateDinner"
-        android:layout_alignEnd="@id/buttonGenerateDinner"
-        android:layout_marginTop="16dp"
-        android:text="Add your dinner" />
 
     <!-- Button for favorite random dinner dishes -->
     <Button
         android:id="@+id/buttonFavoriteRandomDinnerDishes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonAddFavoriteDinner"
+        android:layout_below="@id/buttonGenerateDinner"
         android:layout_alignStart="@id/buttonGenerateDinner"
         android:layout_alignEnd="@id/buttonGenerateDinner"
         android:layout_marginTop="16dp"
         android:text="Favorite Random Dishes" />
+
+    <!-- Button to add favorite dinner -->
+    <Button
+        android:id="@+id/buttonAddFavoriteDinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonFavoriteRandomDinnerDishes"
+        android:layout_alignStart="@id/buttonGenerateDinner"
+        android:layout_alignEnd="@id/buttonGenerateDinner"
+        android:layout_marginTop="16dp"
+        android:text="Add your dinner" />
 
     <!-- Button to view dinner data -->
     <Button
         android:id="@+id/buttonViewData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonFavoriteRandomDinnerDishes"
+        android:layout_below="@id/buttonAddFavoriteDinner"
         android:layout_alignStart="@id/buttonGenerateDinner"
         android:layout_alignEnd="@id/buttonGenerateDinner"
         android:layout_marginTop="16dp"

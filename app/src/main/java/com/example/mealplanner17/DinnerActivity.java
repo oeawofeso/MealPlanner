@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mealplanner17.Breakfast.BreakfastActivity;
+
 public class DinnerActivity extends AppCompatActivity {
 
     @Override
@@ -17,6 +19,7 @@ public class DinnerActivity extends AppCompatActivity {
         Button buttonGenerateDinner = findViewById(R.id.buttonGenerateDinner);
         Button buttonAddFavoriteDinner = findViewById(R.id.buttonAddFavoriteDinner);
         Button buttonViewData = findViewById(R.id.buttonViewData); // Reference to the view data button
+        Button viewSaveButton= findViewById(R.id.buttonFavoriteRandomDinnerDishes);
 
         buttonGenerateDinner.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +42,15 @@ public class DinnerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Start DinnerViewDataActivity to view the data
                 Intent intent = new Intent(DinnerActivity.this, DinnerViewDataActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        viewSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(DinnerActivity.this, MyFavoriteMealsActivity.class);
                 startActivity(intent);
             }
         });

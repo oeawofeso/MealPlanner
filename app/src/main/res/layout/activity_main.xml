@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/main_backdrop"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/main_backdrop">
 
     <!-- Header -->
     <TextView
@@ -16,8 +16,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:padding="15dp"
-        />
+        android:padding="15dp" />
 
     <!-- CardViews with Buttons -->
     <LinearLayout
@@ -25,14 +24,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/greetingID"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="20dp"
+        android:layout_above="@+id/logout_button">
 
         <!-- CardView for Breakfast -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginBottom="75dp"
-            app:cardBackgroundColor="@android:color/transparent">
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="8dp">
 
             <Button
                 android:id="@+id/breakfast_button"
@@ -42,7 +43,8 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:background="@color/white"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:stateListAnimator="@null" />
 
         </androidx.cardview.widget.CardView>
 
@@ -50,8 +52,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginBottom="75dp"
-            app:cardBackgroundColor="@android:color/transparent">
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="8dp">
 
             <Button
                 android:id="@+id/lunch_button"
@@ -61,7 +64,8 @@
                 android:text="@string/lunch"
                 android:textSize="18sp"
                 android:background="@color/blue"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:stateListAnimator="@null" />
 
         </androidx.cardview.widget.CardView>
 
@@ -70,7 +74,8 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginBottom="20dp"
-            app:cardBackgroundColor="@android:color/transparent">
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="8dp">
 
             <Button
                 android:id="@+id/dinner_button"
@@ -80,35 +85,35 @@
                 android:text="@string/dinner"
                 android:textSize="18sp"
                 android:background="@color/blue"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:stateListAnimator="@null" />
 
         </androidx.cardview.widget.CardView>
+
+        <!-- Profile Button -->
         <Button
             android:id="@+id/profile_button"
-            android:layout_width="365dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Profile" />
-
-
-
-
-
+            android:text="Profile"
+            android:textSize="18sp"
+            android:background="@color/white"
+            android:stateListAnimator="@null" />
 
     </LinearLayout>
-    <!-- Bottom Header for Logout Button -->
+
+    <!-- Logout Button -->
     <Button
         android:id="@+id/logout_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="30dp"
-        android:background="@color/blue"
         android:text="@string/logout"
-        android:textSize="18sp" />
-
+        android:textSize="18sp"
+        android:background="@color/blue" />
 
 </RelativeLayout>
