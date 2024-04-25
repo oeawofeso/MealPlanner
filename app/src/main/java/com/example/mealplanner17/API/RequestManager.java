@@ -22,7 +22,12 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-
+/**
+ * The RequestManager class handles API requests related to recipes.
+ * It provides methods to fetch random recipes and detailed information about a specific recipe.
+ * This class uses Retrofit library to make network calls.
+ * API documentation - https://spoonacular.com/food-api/docs#Get-Random-Recipes
+ */
 public class RequestManager {
     Context context;
     Retrofit retrofit= new Retrofit.Builder()

@@ -29,6 +29,16 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The BreakfastGenerateActivity class provides functionalities for generating random breakfast recipes
+ * based on selected tags and excluding certain tags. It fetches and displays recipes from the API
+
+ * A RequestManager instance to handle API requests for fetching recipes
+ * RandomRecipeResponseListener to handle API response for fetching recipes
+ * RecipeClickListener to handle clicks on the displayed recipes, navigating to RecipeDetailsActivity
+ * Used API documentation as guide to set up views based on data given
+ * https://spoonacular.com/food-api/docs#Get-Random-Recipes
+ */
 public class BreakfastGenerateActivity extends AppCompatActivity {
 
     private ProgressDialog dialog;

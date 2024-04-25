@@ -16,6 +16,18 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+/**
+ * The IngredientsAdapter class is responsible for populating a RecyclerView with a list of ingredients for a meal.
+ * It displays each ingredient's name, quantity, and image using a custom ViewHolder.
+
+ * The data for the adapter is provided as a list of ExtendedIngredient objects.
+
+ * The implementation of this adapter is based on the Spoonacular API documentation:
+ * https://spoonacular.com/food-api/docs#Get-Random-Recipes
+ * The documentation was used as a reference to understand the structure of the API response and to correctly display the ingredient data.
+
+ */
+
 public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsViewHolder> {
 
     Context context;

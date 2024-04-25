@@ -22,6 +22,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+/**
+ * This Adapter is used to set the title, image and serving size of each meal when we generate
+ * Used API request to get the data
+ * https://spoonacular.com/food-api/docs#Get-Random-Recipes
+ */
 public class RandomRecipeAdapter extends RecyclerView.Adapter<RandomRecipeViewHolder> {
 
     Context context;
