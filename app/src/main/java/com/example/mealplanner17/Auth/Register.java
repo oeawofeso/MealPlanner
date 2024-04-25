@@ -23,6 +23,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * The Register class handles user registration using Firebase Authentication.
+ * It provides functionality to register a new user by collecting their email, password, first name, and last name.
+ * If the user is already registered, it redirects them to the Login activity.
+
+ * This class uses Firebase Authentication to register new users:
+ * https://firebase.google.com/docs/auth/android/start
+ */
 public class Register extends AppCompatActivity {
 
     TextInputEditText editTextEmail, editTextPassword, editTextFirstName, editTextLastName;

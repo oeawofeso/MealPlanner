@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.mealplanner17.MyFavoriteMealsActivity;
 import com.example.mealplanner17.R;
 
+/**
+ * The BreakfastActivity class serves as the main activity for the Breakfast section of the app.
+ */
 public class BreakfastActivity extends AppCompatActivity {
 
     @Override

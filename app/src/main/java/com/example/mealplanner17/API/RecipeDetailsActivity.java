@@ -39,6 +39,21 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The RecipeDetailsActivity class displays detailed information about a specific meal.
+ * It includes the meal's name, source of information, ingredients, recipe, and side dishes.
+ * This activity fetches data from the Spoonacular API to populate its views.
+ * https://www.youtube.com/watch?v=V20Mj4w-7K4
+ * The video shows how Spoonacular API works and how to request and read response
+ * Spoonacular API Documentation:
+ * https://spoonacular.com/food-api/docs#Get-Random-Recipes
+ * This documentation was used to understand the API response structure and display the data to the user.
+ *
+ * Learn how to extract data from json response through
+ * https://www.geeksforgeeks.org/how-to-extract-data-from-json-array-in-android-using-retrofit-library/?ref=ml_lbp
+ * Last Updated : 08 Dec, 2021 author: geeksforgeeks
+ *
+ */
 public class RecipeDetailsActivity extends AppCompatActivity {
 
     int id;

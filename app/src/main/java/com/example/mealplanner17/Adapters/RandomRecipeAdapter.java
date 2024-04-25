@@ -22,6 +22,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+/**
+ * This Adapter is used to set the title, image and serving size of each meal when we generate
+ * Used API request to get the data
+ * https://spoonacular.com/food-api/docs#Get-Random-Recipes
+ */
 public class RandomRecipeAdapter extends RecyclerView.Adapter<RandomRecipeViewHolder> {
 
     Context context;
@@ -47,7 +52,7 @@ public class RandomRecipeAdapter extends RecyclerView.Adapter<RandomRecipeViewHo
 
         holder.textView_title.setText(recipe.title);
         holder.textView_title.setSelected(true);
-        holder.TextView_like.setText(recipe.aggregateLikes + " Likes");
+
         holder.TextView_servings.setText(recipe.servings + " Servings");
 
         Picasso.get().load(recipe.image).into(holder.imageView_food);
@@ -111,7 +116,6 @@ class RandomRecipeViewHolder extends RecyclerView.ViewHolder{
         random_list_container = itemView.findViewById(R.id.random_list_container);
         textView_title = itemView.findViewById(R.id.textView_title);
         TextView_servings = itemView.findViewById(R.id.TextView_servings);
-        TextView_like = itemView.findViewById(R.id.TextView_like);
         imageView_food = itemView.findViewById(R.id.imageView_food);
         btnFavorite = itemView.findViewById(R.id.btn_favorite);
     }

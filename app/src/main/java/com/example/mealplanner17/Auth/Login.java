@@ -21,6 +21,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * The Login class handles user authentication using Firebase Authentication.
+ * It provides functionality to authenticate a user using their email and password.
+ * If the user is already logged in, it redirects them to the main screen with breakfast, lunch and dinner
+ * This class uses Firebase Authentication to authenticate users:
+ * https://firebase.google.com/docs/auth/android/start
+ *
+ */
 public class Login extends AppCompatActivity {
 
     TextInputEditText editTextEmail, editTextPassword;
