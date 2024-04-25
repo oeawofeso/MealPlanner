@@ -8,7 +8,7 @@
     android:gravity="center"
     android:layout_height="match_parent"
     android:background="@drawable/main_backdrop"
-    tools:context=".Auth.Login">
+    tools:context="com.mealproject.mealplanner17.Auth.Login">
 
 
     <TextView

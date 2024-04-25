@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.mealplanner17">
+    package="com.mealproject.mealplanner17">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -16,20 +16,20 @@
         android:theme="@style/Theme.Material3.Light"
         tools:targetApi="31">
         <activity
-            android:name=".MyFavoriteMealsActivity"
+            android:name="com.mealproject.mealplanner17.MyFavoriteMealsActivity"
             android:exported="false" />
         <activity
-            android:name=".API.RecipeDetailsActivity"
+            android:name="com.mealproject.mealplanner17.API.RecipeDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.mealproject.mealplanner17.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Auth.Register"
+            android:name="com.mealproject.mealplanner17.Auth.Register"
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
-            android:name=".Auth.Login"
+            android:name="com.mealproject.mealplanner17.Auth.Login"
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar">
             <intent-filter>
@@ -39,49 +39,49 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Breakfast.BreakfastActivity">
+            android:name="com.mealproject.mealplanner17.Breakfast.BreakfastActivity">
         </activity>
         <activity
-            android:name=".Breakfast.BreakfastGenerateActivity">
+            android:name="com.mealproject.mealplanner17.Breakfast.BreakfastGenerateActivity">
         </activity>
         <activity
-            android:name=".Breakfast.BreakfastFavoriteActivity">
+            android:name="com.mealproject.mealplanner17.Breakfast.BreakfastFavoriteActivity">
         </activity>
         <activity
-            android:name=".Breakfast.BreakfastViewDataActivity"
+            android:name="com.mealproject.mealplanner17.Breakfast.BreakfastViewDataActivity"
             android:exported="false">
         </activity>
 
         <activity
-            android:name=".LunchActivities.LunchFavoriteActivity">
+            android:name="com.mealproject.mealplanner17.LunchActivities.LunchFavoriteActivity">
         </activity>
         <activity
-            android:name=".LunchActivities.LunchGenerateActivity">
+            android:name="com.mealproject.mealplanner17.LunchActivities.LunchGenerateActivity">
         </activity>
         <activity
-            android:name=".LunchActivities.LunchActivity">
+            android:name="com.mealproject.mealplanner17.LunchActivities.LunchActivity">
         </activity>
         <activity
-            android:name=".DinnerActivity">
+            android:name="com.mealproject.mealplanner17.DinnerActivity">
         </activity>
         <activity
-            android:name=".DinnerGenerateActivity">
+            android:name="com.mealproject.mealplanner17.DinnerGenerateActivity">
         </activity>
         <activity
-            android:name=".DinnerFavoriteActivity">
+            android:name="com.mealproject.mealplanner17.DinnerFavoriteActivity">
         </activity>
         <activity
-            android:name=".DinnerViewDataActivity"
+            android:name="com.mealproject.mealplanner17.DinnerViewDataActivity"
             android:exported="false">
         </activity>
 
         <activity
-            android:name=".LunchActivities.LunchViewDataActivity">
+            android:name="com.mealproject.mealplanner17.LunchActivities.LunchViewDataActivity">
         </activity>
 
 
         <activity
-            android:name=".ProfileActivity">
+            android:name="com.mealproject.mealplanner17.ProfileActivity">
         </activity>
     </application>
 

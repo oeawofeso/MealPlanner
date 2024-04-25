@@ -8,7 +8,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context=".Auth.Register">
+    tools:context="com.mealproject.mealplanner17.Auth.Register">
 
     <TextView
         android:layout_width="match_parent"

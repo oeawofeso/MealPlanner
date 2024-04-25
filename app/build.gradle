@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.mealplanner17'
+    namespace 'com.mealproject.mealplanner17'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.mealplanner17"
+        applicationId "com.mealproject.mealplanner17"
         minSdk 24
         targetSdk 34
         versionCode 1
