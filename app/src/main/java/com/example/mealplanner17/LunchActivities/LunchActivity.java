@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.mealplanner17.DinnerActivity;
+
 import com.example.mealplanner17.MyFavoriteMealsActivity;
 import com.example.mealplanner17.R; // Add this import statement
 

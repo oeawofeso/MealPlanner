@@ -6,55 +6,57 @@
     android:padding="45dp"
     android:gravity="center">
 
-    <LinearLayout
-        android:id="@+id/linear1"
-        android:layout_width="wrap_content"
+    <!-- ListView to display breakfast recipes -->
+    <ListView
+        android:id="@+id/listViewBreakfast"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_above="@id/buttonViewBreakfastData"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/buttonGenerateBreakfast" />
+
+    <!-- Button to generate breakfast -->
+    <Button
+        android:id="@+id/buttonGenerateBreakfast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="16dp"
+        android:text="Generate" />
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="200dp"
-            android:layout_height="60dp"
-            android:text="@string/generate_random_dishes" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linear2"
-        android:layout_width="wrap_content"
+    <!-- Button for favorite random breakfast dishes -->
+    <Button
+        android:id="@+id/buttonFavoriteRandomBreakfastDishes"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@id/linear1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp">
+        android:layout_below="@id/buttonGenerateBreakfast"
+        android:layout_alignStart="@id/buttonGenerateBreakfast"
+        android:layout_alignEnd="@id/buttonGenerateBreakfast"
+        android:layout_marginTop="16dp"
+        android:text="Favorite Random Dishes" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="200dp"
-            android:layout_height="60dp"
-            android:text="@string/favorite_random_dishes" />
-
-    <LinearLayout
-        android:id="@+id/linear3"
-        android:layout_width="wrap_content"
+    <!-- Button to add favorite breakfast -->
+    <Button
+        android:id="@+id/buttonAddFavoriteBreakfast"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="16dp">
+        android:layout_below="@id/buttonFavoriteRandomBreakfastDishes"
+        android:layout_alignStart="@id/buttonGenerateBreakfast"
+        android:layout_alignEnd="@id/buttonGenerateBreakfast"
+        android:layout_marginTop="16dp"
+        android:text="Add your breakfast" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="200dp"
-            android:layout_height="60dp"
-            android:text="@string/add_own_meal" />
-
-    </LinearLayout>
-
-
-
-    </LinearLayout>
+    <!-- Button to view breakfast data -->
+    <Button
+        android:id="@+id/buttonViewBreakfastData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonAddFavoriteBreakfast"
+        android:layout_alignStart="@id/buttonGenerateBreakfast"
+        android:layout_alignEnd="@id/buttonGenerateBreakfast"
+        android:layout_marginTop="16dp"
+        android:text="View Data" />
 
 </RelativeLayout>

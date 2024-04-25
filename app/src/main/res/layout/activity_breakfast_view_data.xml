@@ -20,8 +20,6 @@
             android:layout_height="wrap_content"
             android:text="Placeholder Text" />
 
-        <!-- Button to delete the meal -->
-
 
     </LinearLayout>
 
@@ -39,12 +37,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp" />
-
-    <!-- Spinner for selecting column -->
-    <Spinner
-        android:id="@+id/columnSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <!-- EditText for specifying the index to delete -->
     <EditText
