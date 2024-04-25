@@ -40,20 +40,19 @@ public class BreakfastFavoriteActivity extends AppCompatActivity {
         String ingredients = editTextIngredients.getText().toString().trim();
         String cookingInstructions = editTextCookingInstructions.getText().toString().trim();
 
-        // Check if any field is empty
+
         if (mealName.isEmpty() || ingredients.isEmpty() || cookingInstructions.isEmpty()) {
             Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Call insertBreakfast method of BreakfastDBHelper
+
         breakfastDBHelper.insertBreakfastData(mealName, ingredients, cookingInstructions);
 
 
-        // Show a success message
         Toast.makeText(this, "Meal data saved successfully", Toast.LENGTH_SHORT).show();
 
-        // Optionally, you can clear the input fields here
+
         editTextMealName.setText("");
         editTextIngredients.setText("");
         editTextCookingInstructions.setText("");

@@ -8,20 +8,20 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class BreakfastMealDatabaseHelper extends SQLiteOpenHelper {
 
-    // Define constants for database name, version, and table names
+
     private static final String DATABASE_NAME = "breaskfastmealplanner.db";
     private static final int DATABASE_VERSION = 1;
 
-    // Define columns for all tables
+
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_MEAL_NAME = "meal_name";
     public static final String COLUMN_INGREDIENTS = "ingredients";
     public static final String COLUMN_COOKING_INSTRUCTIONS = "cooking_instructions";
 
-    // Table name for breakfast
+
     public static final String TABLE_BREAKFAST = "breakfast";
 
-    // Database creation SQL statement for breakfast table
+
     public static final String DATABASE_CREATE_BREAKFAST = "CREATE TABLE "
             + TABLE_BREAKFAST + "(" + COLUMN_ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_MEAL_NAME
@@ -43,7 +43,7 @@ public class BreakfastMealDatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // Method to insert a new breakfast meal into the database
+
     public long insertBreakfastData(String mealName, String ingredients, String cookingInstructions) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -55,20 +55,20 @@ public class BreakfastMealDatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
-    // Method to get all breakfast meals from the database
+
     public Cursor getAllBreakfastMeals() {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.query(TABLE_BREAKFAST, null, null, null, null, null, null);
     }
 
-    // Method to delete a breakfast meal from the database by ID
+
     public void deleteBreakfastMealById(long id) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_BREAKFAST, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
         db.close();
     }
 
-    // Method to delete a breakfast meal from the database by index
+
     public void deleteBreakfastMealByIndex(int index) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT " + COLUMN_ID + " FROM " + TABLE_BREAKFAST + " LIMIT 1 OFFSET ?", new String[]{String.valueOf(index)});

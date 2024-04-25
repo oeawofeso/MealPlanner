@@ -5,14 +5,14 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Container for each meal entry -->
+
     <LinearLayout
         android:id="@+id/mealEntryContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <!-- Title TextView -->
+
         <TextView
             android:id="@+id/textViewData"
             android:layout_width="0dp"
@@ -23,7 +23,7 @@
 
     </LinearLayout>
 
-    <!-- Ingredients TextView -->
+
     <TextView
         android:id="@+id/textViewIngredients"
         android:layout_width="match_parent"
@@ -31,21 +31,21 @@
         android:textSize="16sp"
         android:layout_marginBottom="8dp" />
 
-    <!-- Instructions TextView -->
+
     <TextView
         android:id="@+id/textViewInstructions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp" />
 
-    <!-- EditText for specifying the index to delete -->
+
     <EditText
         android:id="@+id/editTextIndexToDelete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter index to delete" />
 
-    <!-- Button to delete meal by index -->
+
     <Button
         android:id="@+id/btnDeleteByIndex"
         android:layout_width="match_parent"

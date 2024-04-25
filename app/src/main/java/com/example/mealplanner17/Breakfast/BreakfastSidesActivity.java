@@ -39,7 +39,7 @@ public class BreakfastSidesActivity extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseUser user;
 
-    //spinner object
+
     Spinner spinner;
     List<String> breakfastDrinkTags = new ArrayList<>();
     List<String> breakfastTags = new ArrayList<>();
@@ -118,16 +118,14 @@ public class BreakfastSidesActivity extends AppCompatActivity {
     };
 
     public static void fetchAndDisplayDrinks(Context context, RandomRecipeAdapter adapter, RandomRecipeResponseListener listener) {
-        // Define the tags for fetching drinks
+
         List<String> drinkTags = new ArrayList<>();
-        drinkTags.add("drink"); // Add the drink tag
+        drinkTags.add("drink");
 
-        List<String> drinkTagsExclude = new ArrayList<>(); // Define exclusions if necessary
-
-        // Create a RequestManager instance
+        List<String> drinkTagsExclude = new ArrayList<>();
         RequestManager manager = new RequestManager(context);
 
-        // Fetch drinks recipes
+
         manager.getRandomRecipes(new RandomRecipeResponseListener() {
             @Override
             public void didFetch(RandomRecipeApiResponse response, String message) {

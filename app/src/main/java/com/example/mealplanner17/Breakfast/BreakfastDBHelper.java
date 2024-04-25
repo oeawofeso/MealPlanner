@@ -67,7 +67,7 @@ public class BreakfastDBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // Method to delete a breakfast meal from the database by index
+
     public void deleteBreakfastMealByIndex(int index) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT _id FROM breakfast_table LIMIT 1 OFFSET ?", new String[]{String.valueOf(index - 1)});

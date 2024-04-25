@@ -68,7 +68,7 @@ public class BreakfastViewDataActivity extends AppCompatActivity {
         textViewData.setText(stringBuilder.toString());
     }
 
-    // Method to handle delete by index button click
+
     public void onDeleteByIndexButtonClick(View view) {
         EditText editTextIndexToDelete = findViewById(R.id.editTextIndexToDelete);
         String indexStr = editTextIndexToDelete.getText().toString();
