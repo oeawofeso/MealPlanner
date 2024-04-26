@@ -102,6 +102,15 @@ public class RandomRecipeAdapter extends RecyclerView.Adapter<RandomRecipeViewHo
         this.list.addAll(newData);
         notifyDataSetChanged();
     }
+    @SuppressLint("NotifyDataSetChanged")
+    public void setRecipes(List<Recipe> recipes) {
+        this.list = recipes;
+        notifyDataSetChanged();
+    }
+    public List<Recipe> getList() {
+        return list;
+    }
+
 
 }
 class RandomRecipeViewHolder extends RecyclerView.ViewHolder{

@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,12 +23,16 @@ import com.mealproject.mealplanner17.Adapters.RandomRecipeAdapter;
 import com.mealproject.mealplanner17.Listeners.RandomRecipeResponseListener;
 import com.mealproject.mealplanner17.Listeners.RecipeClickListener;
 import com.mealproject.mealplanner17.ModelsAPI.RandomRecipeApiResponse;
+import com.mealproject.mealplanner17.ModelsAPI.Recipe;
 import com.mealproject.mealplanner17.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * The BreakfastGenerateActivity class provides functionalities for generating random breakfast recipes
@@ -39,41 +45,58 @@ import java.util.List;
  * https://spoonacular.com/food-api/docs#Get-Random-Recipes
  */
 public class BreakfastGenerateActivity extends AppCompatActivity {
-
     private ProgressDialog dialog;
     private RequestManager manager;
     private RandomRecipeAdapter randomRecipeAdapter;
     private RecyclerView recyclerView;
-
-    private FirebaseAuth auth;
-    private FirebaseUser user;
     private Button button;
-
-    // Spinner objects
     private Spinner spinner;
     private Spinner spinnerEx;
     private List<String> breakfastTags = new ArrayList<>();
     private List<String> breakfastTagsExclude = new ArrayList<>();
+    private Set<String> clickedRecipeIds = new HashSet<>();
+    private SharedPreferences sharedPreferences;
+    private static final String PREF_LAST_CLEAR_TIMESTAMP = "last_clear_timestamp";
+    private static final long CLEAR_INTERVAL = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breakfast_generate);
 
+        // Initialize SharedPreferences
+        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+
+        // Check if it's time to clear the list
+        checkClearClickedRecipeIds();
+
         initializeViews();
         setupSpinners();
-        setupFirebase();
-        setupRecipeManager();
-        loadInitialData();
+        setupRequestManager();
+
+        randomRecipeAdapter = new RandomRecipeAdapter(BreakfastGenerateActivity.this, new ArrayList<>(), recipeClickListener);
+        recyclerView.setAdapter(randomRecipeAdapter);
+    }
+
+    private void checkClearClickedRecipeIds() {
+        long lastClearTimestamp = sharedPreferences.getLong(PREF_LAST_CLEAR_TIMESTAMP, 0);
+        long currentTimestamp = System.currentTimeMillis();
+
+        // Check if 7 days have passed since the last clear
+        if (currentTimestamp - lastClearTimestamp >= CLEAR_INTERVAL) {
+            clickedRecipeIds.clear(); // Clear the list
+            sharedPreferences.edit().putLong(PREF_LAST_CLEAR_TIMESTAMP, currentTimestamp).apply(); // Save current timestamp as last clear timestamp
+        }
     }
 
     private void initializeViews() {
         dialog = new ProgressDialog(this);
         dialog.setTitle("Loading");
-
         spinner = findViewById(R.id.spinner_tags);
         spinnerEx = findViewById(R.id.spinner_tags2);
         recyclerView = findViewById(R.id.recycler_random);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
     }
 
     private void setupSpinners() {
@@ -88,16 +111,8 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
         spinnerEx.setOnItemSelectedListener(spinnerSelectedListener2);
     }
 
-    private void setupFirebase() {
-        auth = FirebaseAuth.getInstance();
-        user = auth.getCurrentUser();
-    }
-
-    private void setupRecipeManager() {
+    private void setupRequestManager() {
         manager = new RequestManager(this);
-    }
-
-    private void loadInitialData() {
         breakfastTags.add("breakfast");
         breakfastTagsExclude.add("breakfast");
         manager.getRandomRecipes(randomRecipeResponseListener, breakfastTags, breakfastTagsExclude);
@@ -105,14 +120,18 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
     }
 
     private final RandomRecipeResponseListener randomRecipeResponseListener = new RandomRecipeResponseListener() {
+        @SuppressLint("NotifyDataSetChanged")
         @Override
         public void didFetch(RandomRecipeApiResponse response, String message) {
             dialog.dismiss();
-            recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(new GridLayoutManager(BreakfastGenerateActivity.this, 1));
 
-            randomRecipeAdapter = new RandomRecipeAdapter(BreakfastGenerateActivity.this, response.recipes, recipeClickListener);
-            recyclerView.setAdapter(randomRecipeAdapter);
+            // Filter out the recipes that have been clicked
+            List<Recipe> filteredRecipes = response.recipes.stream()
+                    .filter(recipe -> !clickedRecipeIds.contains(recipe.id))
+                    .collect(Collectors.toList());
+
+            randomRecipeAdapter.setRecipes(filteredRecipes);
+            randomRecipeAdapter.notifyDataSetChanged();
         }
 
         @Override
@@ -124,7 +143,9 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
     private final AdapterView.OnItemSelectedListener spinnerSelectedListener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-            updateBreakfastTags(adapterView.getSelectedItem().toString(), true);
+            updateTagsList(breakfastTags, adapterView.getSelectedItem().toString());
+            Log.d("BreakfastGenerateActivity", "First tagsInc: " + breakfastTags.toString());
+            Log.d("BreakfastGenerateActivity", "First tagsExclude: " + breakfastTagsExclude.toString());
             manager.getRandomRecipes(randomRecipeResponseListener, breakfastTags, breakfastTagsExclude);
             dialog.show();
         }
@@ -137,7 +158,9 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
     private final AdapterView.OnItemSelectedListener spinnerSelectedListener2 = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-            updateBreakfastTags(adapterView.getSelectedItem().toString(), false);
+            updateTagsList(breakfastTagsExclude, adapterView.getSelectedItem().toString());
+            Log.d("BreakfastGenerateActivity", "Second tagsInc: " + breakfastTags.toString());
+            Log.d("BreakfastGenerateActivity", "Second tagsExclude: " + breakfastTagsExclude.toString());
             manager.getRandomRecipes(randomRecipeResponseListener, breakfastTags, breakfastTagsExclude);
             dialog.show();
         }
@@ -147,23 +170,27 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
         }
     };
 
-    private void updateBreakfastTags(String selectedTag, boolean include) {
-        if (include) {
-            breakfastTags.clear();
-            breakfastTags.add("breakfast");
-            if (!selectedTag.equals("breakfast")) {
-                breakfastTags.add(selectedTag);
-            }
-        } else {
-            breakfastTagsExclude.clear();
-            breakfastTagsExclude.add(selectedTag);
+    private void updateTagsList(List<String> tagsList, String selectedTag) {
+        tagsList.clear();
+        tagsList.add("breakfast");
+        if (!selectedTag.equals("breakfast")) {
+            tagsList.add(selectedTag);
         }
-        Log.d("BreakfastGenerateActivity", "tagsInc: " + breakfastTags.toString());
-        Log.d("BreakfastGenerateActivity", "tagsExclude: " + breakfastTagsExclude.toString());
     }
 
-    private final RecipeClickListener recipeClickListener = id -> {
-        startActivity(new Intent(BreakfastGenerateActivity.this, RecipeDetailsActivity.class)
-                .putExtra("id", id));
+    private final RecipeClickListener recipeClickListener = new RecipeClickListener() {
+        @Override
+        public void onRecipeClick(String id) {
+            clickedRecipeIds.add(id);
+            for (Recipe recipe : randomRecipeAdapter.getList()) {
+                if (String.valueOf(recipe.id).equals(id)) {
+                    String title = recipe.title;
+                    Log.d("BreakfastGenerateActivity", "Added clicked recipe - ID: " + id + ", Title: " + title);
+                    break;
+                }
+            }
+            startActivity(new Intent(BreakfastGenerateActivity.this, RecipeDetailsActivity.class)
+                    .putExtra("id", id));
+        }
     };
 }

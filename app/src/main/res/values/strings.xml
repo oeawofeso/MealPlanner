@@ -130,6 +130,7 @@
     <string name="add_ownMeal">Add Own Meal</string>
     <string name="view_your_liked_dishes">View Your Liked Dishes</string>
     <string name="side_dish">Side Dish</string>
+    <string name="history">History</string>
 
 
 </resources>
