@@ -25,7 +25,18 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"/>
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="50dp">
 
+        </TextView>
+
+        <Button
+            android:id="@+id/historyButton"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="@string/history">
+        </Button>
     </LinearLayout>
 
 <!--    Food Intolerance Spinner-->
