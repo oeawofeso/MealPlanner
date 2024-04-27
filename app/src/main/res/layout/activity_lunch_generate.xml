@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/orange"
-    android:padding="16dp"
-    tools:context=".BrowseMeals">
+    android:padding="16dp">
 
     <!-- Header Container -->
     <LinearLayout
