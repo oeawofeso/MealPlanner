@@ -1,5 +1,7 @@
 package com.mealproject.mealplanner17.ModelsAPI;
 
+import java.util.ArrayList;
+
 public class Recipe {
 
 
@@ -10,6 +12,8 @@ public class Recipe {
     public String title;
 
     public int servings;
+
+    public ArrayList<ExtendedIngredient> extendedIngredients;
 
     public String image;
 
@@ -22,5 +26,13 @@ public class Recipe {
         this.servings = servings;
         this.sourceName = sourceName;
     }
+
+    public String getTitle(){
+        return title;
+    }
+    public String getImage(){
+        return image;
+    }
+
 
 }

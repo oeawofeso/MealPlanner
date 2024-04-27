@@ -24,8 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/greetingID"
         android:orientation="vertical"
-        android:padding="20dp"
-        android:layout_above="@+id/logout_button">
+        android:padding="25dp"
+        android:layout_marginTop="55dp">
 
         <!-- CardView for Breakfast -->
         <androidx.cardview.widget.CardView
@@ -41,6 +41,7 @@
                 android:layout_height="match_parent"
                 android:text="@string/breakfast"
                 android:textColor="@color/white"
+
                 android:textSize="18sp"
                 android:background="@color/white"
                 android:gravity="center"

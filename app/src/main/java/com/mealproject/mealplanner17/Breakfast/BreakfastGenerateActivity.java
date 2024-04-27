@@ -20,6 +20,8 @@ import android.widget.Toast;
 import com.mealproject.mealplanner17.API.RecipeDetailsActivity;
 import com.mealproject.mealplanner17.API.RequestManager;
 import com.mealproject.mealplanner17.Adapters.RandomRecipeAdapter;
+import com.mealproject.mealplanner17.ClickedRecipeIdsSingleton;
+import com.mealproject.mealplanner17.HistoryActivity;
 import com.mealproject.mealplanner17.Listeners.RandomRecipeResponseListener;
 import com.mealproject.mealplanner17.Listeners.RecipeClickListener;
 import com.mealproject.mealplanner17.ModelsAPI.RandomRecipeApiResponse;
@@ -54,7 +56,7 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
     private Spinner spinnerEx;
     private List<String> breakfastTags = new ArrayList<>();
     private List<String> breakfastTagsExclude = new ArrayList<>();
-    private Set<String> clickedRecipeIds = new HashSet<>();
+
     private SharedPreferences sharedPreferences;
     private static final String PREF_LAST_CLEAR_TIMESTAMP = "last_clear_timestamp";
     private static final long CLEAR_INTERVAL = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
@@ -64,11 +66,21 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breakfast_generate);
 
-        // Initialize SharedPreferences
         sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
-        // Check if it's time to clear the list
-        checkClearClickedRecipeIds();
+        // Retrieve clicked recipe IDs when the activity is created
+        retrieveClickedRecipeIds();
+
+        Button historyButton = findViewById(R.id.historyButton);
+        historyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Set<String> clickedRecipeIds = ClickedRecipeIdsSingleton.getInstance().getClickedRecipeIds();
+                Intent intent = new Intent(BreakfastGenerateActivity.this, HistoryActivity.class);
+                intent.putStringArrayListExtra("clickedRecipeIds", new ArrayList<>(clickedRecipeIds));
+                startActivity(intent);
+            }
+        });
 
         initializeViews();
         setupSpinners();
@@ -78,10 +90,24 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
         recyclerView.setAdapter(randomRecipeAdapter);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Retrieve clicked recipe IDs when the activity is started
+        retrieveClickedRecipeIds();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // Save clicked recipe IDs when the activity is stopped
+        saveClickedRecipeIds();
+    }
+
     private void checkClearClickedRecipeIds() {
         long lastClearTimestamp = sharedPreferences.getLong(PREF_LAST_CLEAR_TIMESTAMP, 0);
         long currentTimestamp = System.currentTimeMillis();
-
+        Set<String> clickedRecipeIds = ClickedRecipeIdsSingleton.getInstance().getClickedRecipeIds();
         // Check if 7 days have passed since the last clear
         if (currentTimestamp - lastClearTimestamp >= CLEAR_INTERVAL) {
             clickedRecipeIds.clear(); // Clear the list
@@ -124,7 +150,7 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
         @Override
         public void didFetch(RandomRecipeApiResponse response, String message) {
             dialog.dismiss();
-
+            Set<String> clickedRecipeIds = ClickedRecipeIdsSingleton.getInstance().getClickedRecipeIds();
             // Filter out the recipes that have been clicked
             List<Recipe> filteredRecipes = response.recipes.stream()
                     .filter(recipe -> !clickedRecipeIds.contains(recipe.id))
@@ -181,10 +207,12 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
     private final RecipeClickListener recipeClickListener = new RecipeClickListener() {
         @Override
         public void onRecipeClick(String id) {
+            Set<String> clickedRecipeIds = ClickedRecipeIdsSingleton.getInstance().getClickedRecipeIds();
             clickedRecipeIds.add(id);
             for (Recipe recipe : randomRecipeAdapter.getList()) {
                 if (String.valueOf(recipe.id).equals(id)) {
                     String title = recipe.title;
+
                     Log.d("BreakfastGenerateActivity", "Added clicked recipe - ID: " + id + ", Title: " + title);
                     break;
                 }
@@ -193,4 +221,19 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
                     .putExtra("id", id));
         }
     };
+
+    private void saveClickedRecipeIds() {
+        // Get the clicked recipe IDs
+        Set<String> clickedRecipeIds = ClickedRecipeIdsSingleton.getInstance().getClickedRecipeIds();
+        // Store the clicked recipe IDs in SharedPreferences
+        sharedPreferences.edit().putStringSet("clickedRecipeIds", clickedRecipeIds).apply();
+    }
+
+    private void retrieveClickedRecipeIds() {
+        // Retrieve the clicked recipe IDs from SharedPreferences
+        Set<String> clickedRecipeIds = sharedPreferences.getStringSet("clickedRecipeIds", new HashSet<>());
+        // Update the clicked recipe IDs in the Singleton class
+        ClickedRecipeIdsSingleton.getInstance().setClickedRecipeIds(clickedRecipeIds);
+    }
+
 }

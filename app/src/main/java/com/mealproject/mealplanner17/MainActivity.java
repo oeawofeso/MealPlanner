@@ -87,13 +87,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Retrieve data from SharedPreferences
-        String firstName = prefs.getString("first_name", "defaultFirstName"); // "defaultFirstName" is a default value.
+
         if(user==null){
             Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
             finish();
         }
-        String Greet = getGreet() + ", " +firstName;
+        String Greet = "Welcome to Meal Planner";
         greeting.setText(Greet);
         button.setOnClickListener(new View.OnClickListener() { //logout button
             @Override

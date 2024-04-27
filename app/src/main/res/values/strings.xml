@@ -102,7 +102,6 @@
     <string name="similar_recipes">Similar Recipes</string>
 
 
-
     <string name="hello_world">Hello World</string>
     <string name="logout">Logout</string>
     <string name="dinner">Dinner</string>
@@ -131,6 +130,7 @@
     <string name="view_your_liked_dishes">View Your Liked Dishes</string>
     <string name="side_dish">Side Dish</string>
     <string name="history">History</string>
+    <string name="no_history_message">no_history_message</string>
 
 
 </resources>

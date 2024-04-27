@@ -16,20 +16,26 @@
         android:theme="@style/Theme.Material3.Light"
         tools:targetApi="31">
         <activity
-            android:name="com.mealproject.mealplanner17.MyFavoriteMealsActivity"
+            android:name=".MealDetailActivity"
             android:exported="false" />
         <activity
-            android:name="com.mealproject.mealplanner17.API.RecipeDetailsActivity"
+            android:name=".HistoryActivity"
             android:exported="false" />
         <activity
-            android:name="com.mealproject.mealplanner17.MainActivity"
+            android:name=".MyFavoriteMealsActivity"
             android:exported="false" />
         <activity
-            android:name="com.mealproject.mealplanner17.Auth.Register"
+            android:name=".API.RecipeDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Auth.Register"
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
-            android:name="com.mealproject.mealplanner17.Auth.Login"
+            android:name=".Auth.Login"
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar">
             <intent-filter>
@@ -38,51 +44,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Breakfast.BreakfastActivity" />
+        <activity android:name=".Breakfast.BreakfastGenerateActivity" />
+        <activity android:name=".Breakfast.BreakfastFavoriteActivity" />
         <activity
-            android:name="com.mealproject.mealplanner17.Breakfast.BreakfastActivity">
-        </activity>
+            android:name=".Breakfast.BreakfastViewDataActivity"
+            android:exported="false" />
+        <activity android:name=".LunchActivities.LunchFavoriteActivity" />
+        <activity android:name=".LunchActivities.LunchGenerateActivity" />
+        <activity android:name=".LunchActivities.LunchActivity" />
+        <activity android:name=".DinnerActivity" />
+        <activity android:name=".DinnerGenerateActivity" />
+        <activity android:name=".DinnerFavoriteActivity" />
         <activity
-            android:name="com.mealproject.mealplanner17.Breakfast.BreakfastGenerateActivity">
-        </activity>
-        <activity
-            android:name="com.mealproject.mealplanner17.Breakfast.BreakfastFavoriteActivity">
-        </activity>
-        <activity
-            android:name="com.mealproject.mealplanner17.Breakfast.BreakfastViewDataActivity"
-            android:exported="false">
-        </activity>
-
-        <activity
-            android:name="com.mealproject.mealplanner17.LunchActivities.LunchFavoriteActivity">
-        </activity>
-        <activity
-            android:name="com.mealproject.mealplanner17.LunchActivities.LunchGenerateActivity">
-        </activity>
-        <activity
-            android:name="com.mealproject.mealplanner17.LunchActivities.LunchActivity">
-        </activity>
-        <activity
-            android:name="com.mealproject.mealplanner17.DinnerActivity">
-        </activity>
-        <activity
-            android:name="com.mealproject.mealplanner17.DinnerGenerateActivity">
-        </activity>
-        <activity
-            android:name="com.mealproject.mealplanner17.DinnerFavoriteActivity">
-        </activity>
-        <activity
-            android:name="com.mealproject.mealplanner17.DinnerViewDataActivity"
-            android:exported="false">
-        </activity>
-
-        <activity
-            android:name="com.mealproject.mealplanner17.LunchActivities.LunchViewDataActivity">
-        </activity>
-
-
-        <activity
-            android:name="com.mealproject.mealplanner17.ProfileActivity">
-        </activity>
+            android:name=".DinnerViewDataActivity"
+            android:exported="false" />
+        <activity android:name=".LunchActivities.LunchViewDataActivity" />
+        <activity android:name=".ProfileActivity" />
     </application>
 
 </manifest>
