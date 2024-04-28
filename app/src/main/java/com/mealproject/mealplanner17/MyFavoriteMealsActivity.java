@@ -96,6 +96,8 @@ public class MyFavoriteMealsActivity extends AppCompatActivity implements Recipe
 
     @Override
     public void onRecipeClick(String id) {
+
+
         startActivity(new Intent(MyFavoriteMealsActivity.this, RecipeDetailsActivity.class)
                 .putExtra("id", id));
     }

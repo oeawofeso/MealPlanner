@@ -1,23 +1,35 @@
 package com.mealproject.mealplanner17;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mealproject.mealplanner17.Adapters.HistoryAdapter;
+import com.mealproject.mealplanner17.API.RecipeDetailsActivity;
+import com.mealproject.mealplanner17.API.RequestManager;
+import com.mealproject.mealplanner17.Adapters.RandomRecipeAdapter;
+import com.mealproject.mealplanner17.Listeners.RecipeClickListener;
+import com.mealproject.mealplanner17.Listeners.RecipeDetailsListener;
+import com.mealproject.mealplanner17.ModelsAPI.Recipe;
+import com.mealproject.mealplanner17.ModelsAPI.RecipeDetailsResponse;
+
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
-public class HistoryActivity extends AppCompatActivity {
+public class HistoryActivity extends AppCompatActivity implements RecipeDetailsListener, RecipeClickListener {
 
     private RecyclerView recyclerView;
     private TextView noHistoryText;
-    private HistoryAdapter historyAdapter;
+    private RandomRecipeAdapter historyAdapter;
+    private List<Recipe> historyRecipes;
     private Set<String> clickedRecipeIds;
 
     @Override
@@ -25,33 +37,68 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        // the singleton class
+        // Initialize UI elements
+        recyclerView = findViewById(R.id.history_recycler_view);
+
+
+
+
+        // Retrieve clicked recipe IDs from Singleton
         clickedRecipeIds = ClickedRecipeIdsSingleton.getInstance().getClickedRecipeIds();
 
-        recyclerView = findViewById(R.id.history_recycler_view);
-        noHistoryText = findViewById(R.id.no_history_text);
+        // Initialize empty list for history recipes
+        historyRecipes = new ArrayList<>();
 
-
-        ArrayList<String> clickedRecipeIdsFromIntent = getIntent().getStringArrayListExtra("clickedRecipeIds");
-
-        //clickedRecipeIds from Singleton
-        if (clickedRecipeIdsFromIntent != null) {
-            clickedRecipeIds.addAll(clickedRecipeIdsFromIntent);
-        }
-
+        // Check if clicked recipes exist
         if (!clickedRecipeIds.isEmpty()) {
-            // If there are clicked recipes
-            noHistoryText.setVisibility(View.GONE);
-            recyclerView.setVisibility(View.VISIBLE); // Show recycler view
-
-
-            historyAdapter = new HistoryAdapter(this, new ArrayList<>(clickedRecipeIds), recyclerView);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            recyclerView.setAdapter(historyAdapter);
+            fetchRecipeDetails(clickedRecipeIds);
         } else {
-            // no clicked recipes
-            noHistoryText.setVisibility(View.VISIBLE); // Show no history message
-            recyclerView.setVisibility(View.GONE); // Hide recycler view
+            // No clicked recipes
+            noHistoryText.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
         }
+    }
+
+    private void fetchRecipeDetails(Set<String> recipeIds) {
+        RequestManager manager = new RequestManager(this);
+        for (String id : recipeIds) {
+            manager.getRecipeDetails(this, Integer.parseInt(id));
+        }
+    }
+
+    @Override
+    public void didFetch(RecipeDetailsResponse response, String message) {
+        Log.d("HistoryActivity", "Fetched Recipe: ID = " + response.id + ", Title = " + response.title);
+
+        historyRecipes.add(new Recipe(
+                response.id,
+                response.title,
+                response.image,
+                response.servings,
+                response.sourceName
+        ));
+
+        // Update adapter if all recipes are fetched
+        if (historyRecipes.size() == clickedRecipeIds.size()) {
+            updateRecyclerView();
+        }
+    }
+
+    @Override
+    public void didError(String message) {
+        Log.e("HistoryActivity", "Error fetching recipe details: " + message);
+        Toast.makeText(HistoryActivity.this, "Error fetching history recipes", Toast.LENGTH_SHORT).show();
+    }
+
+    private void updateRecyclerView() {
+        historyAdapter = new RandomRecipeAdapter(this, historyRecipes, this );
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(historyAdapter);
+    }
+
+    @Override
+    public void onRecipeClick(String id) {
+        startActivity(new Intent(HistoryActivity.this, RecipeDetailsActivity.class)
+                .putExtra("id", id));
     }
 }

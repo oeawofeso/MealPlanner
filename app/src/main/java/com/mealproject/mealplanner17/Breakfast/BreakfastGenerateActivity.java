@@ -209,6 +209,8 @@ public class BreakfastGenerateActivity extends AppCompatActivity {
         public void onRecipeClick(String id) {
             Set<String> clickedRecipeIds = ClickedRecipeIdsSingleton.getInstance().getClickedRecipeIds();
             clickedRecipeIds.add(id);
+
+
             for (Recipe recipe : randomRecipeAdapter.getList()) {
                 if (String.valueOf(recipe.id).equals(id)) {
                     String title = recipe.title;
