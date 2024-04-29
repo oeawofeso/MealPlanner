@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Your app's theme attributes -->
+    </style>
+
+    <style name="NoUnderlineEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@null</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

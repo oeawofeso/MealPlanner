@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/profile_section"
         android:layout_width="match_parent"
         android:layout_height="405dp">
 
@@ -19,6 +20,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/profile_image_view"
                 android:layout_marginTop="45dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="150dp"
@@ -26,14 +28,15 @@
                 android:src="@drawable/profileplaceholder" />
 
             <TextView
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/profile_name_text_view"
+                android:layout_width="226dp"
+                android:layout_height="51dp"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:text="Meal Man"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                android:textSize="21sp" />
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
         </LinearLayout>
 
         <!-- Information CardView -->
@@ -63,14 +66,12 @@
                         android:text="Weight"
                         android:textSize="20sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <Spinner
+                        android:id="@+id/goal_weight_spinner"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="200"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/purple" />
+                        android:layout_marginTop="16dp" />
+
                 </LinearLayout>
 
                 <!-- Height Section -->
@@ -87,14 +88,12 @@
                         android:text="Height"
                         android:textSize="20sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <Spinner
+                        android:id="@+id/height_spinner"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="6'"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/purple" />
+                        android:layout_marginTop="16dp" />
+
                 </LinearLayout>
 
                 <!-- Goal Weight Section -->
@@ -111,14 +110,12 @@
                         android:text="Goal Weight"
                         android:textSize="20sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <Spinner
+                        android:id="@+id/weight_spinner"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="180"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/purple" />
+                        android:layout_marginTop="16dp" />
+
                 </LinearLayout>
             </LinearLayout>
 
@@ -135,6 +132,7 @@
 
         <!-- Email Section -->
         <LinearLayout
+            android:id="@+id/email_section"
             android:orientation="horizontal"
             android:paddingLeft="25dp"
             android:layout_width="match_parent"
@@ -146,12 +144,12 @@
                 android:src="@drawable/baseline_email_24" />
 
             <TextView
+                android:id="@+id/email_text_view"
                 android:textStyle="bold"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:text="Email@gmail.com" />
+                android:paddingLeft="20dp" />
         </LinearLayout>
 
         <!-- Phone Section -->
@@ -178,25 +176,27 @@
 
         <!-- Username Section -->
         <LinearLayout
+            android:id="@+id/username_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:orientation="horizontal"
-            android:paddingLeft="25dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:paddingLeft="25dp">
 
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:src="@drawable/baseline_person_24" />
 
-            <TextView
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical"
+            <EditText
+                android:id="@+id/username_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:text="Meal Man" />
+                android:inputType="text"
+                android:layout_gravity="center_vertical"
+                style="@style/NoUnderlineEditText" />
         </LinearLayout>
+
     </LinearLayout>
 
     <!-- Favorite Button -->
