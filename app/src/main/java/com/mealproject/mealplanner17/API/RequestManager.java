@@ -78,15 +78,13 @@ public class RequestManager {
         });
     }
 
-    private interface CallRandomRecipes{
+    private interface CallRandomRecipes {
         @GET("recipes/random")
         Call<RandomRecipeApiResponse> callRandomRecipe(
-
                 @Query("apiKey") String apiKey,
                 @Query("number") String number,
                 @Query("tags") List<String> tags,
-                @Query("tags") List<String> exTags
-
+                @Query("tagsExclude") List<String> exTags // Change the parameter name to match the API endpoint
         );
     }
 

@@ -85,6 +85,14 @@
             android:layout_marginStart="16dp"/>
     </LinearLayout>
 
+    <Button
+        android:id="@+id/gotoSidesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Lunch Sides"
+        android:onClick="gotoLunchSidesActivity" />
+
+
     <!-- RecyclerView/Dynamic View Changes based on User's input -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_horizontal"

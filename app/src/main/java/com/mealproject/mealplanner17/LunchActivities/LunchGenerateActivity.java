@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.mealproject.mealplanner17.API.LunchDetailsActivity;
 import com.mealproject.mealplanner17.API.RecipeDetailsActivity;
 import com.mealproject.mealplanner17.API.RequestManager;
 import com.mealproject.mealplanner17.Adapters.RandomRecipeAdapter;
@@ -51,12 +52,20 @@ public class LunchGenerateActivity extends AppCompatActivity {
         arrayAdapter.setDropDownViewResource(R.layout.spinner_inner_text);
         spinner.setAdapter(arrayAdapter);
         spinner.setOnItemSelectedListener(spinnerSelectedListener);
-
+        Button gotoSidesButton = findViewById(R.id.gotoSidesButton);
         spinner2 = findViewById(R.id.allergen_spinner);
         ArrayAdapter arrayAdapter2= ArrayAdapter.createFromResource(this, R.array.allergens, R.layout.spinner_text);
         arrayAdapter2.setDropDownViewResource(R.layout.spinner_inner_text);
         spinner2.setAdapter(arrayAdapter2);
         spinner2.setOnItemSelectedListener(spinnerSelectedListener_2);
+
+        gotoSidesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start LunchSidesActivity
+                startActivity(new Intent(LunchGenerateActivity.this, LunchSidesActivity.class));
+            }
+        });
 //        EnterButt = findViewById(R.id.EnterButt);
 //        EnterButt.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -103,7 +112,7 @@ public class LunchGenerateActivity extends AppCompatActivity {
     private final RecipeClickListener recipeClickListener = new RecipeClickListener() {
         @Override
         public void onRecipeClick(String id) {
-            startActivity(new Intent(LunchGenerateActivity.this, RecipeDetailsActivity.class)
+            startActivity(new Intent(LunchGenerateActivity.this, LunchDetailsActivity.class)
                     .putExtra("id",id));
         }
     };
@@ -154,6 +163,10 @@ public class LunchGenerateActivity extends AppCompatActivity {
 
         }
     };
+    public void gotoLunchSidesActivity(View view) {
+        Intent intent = new Intent(this, LunchSidesActivity.class);
+        startActivity(intent);
+    }
 }
 
 

@@ -26,6 +26,9 @@
             android:name=".API.RecipeDetailsActivity"
             android:exported="false" />
         <activity
+            android:name=".API.LunchDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
@@ -50,6 +53,7 @@
             android:exported="false" />
         <activity android:name=".LunchActivities.LunchFavoriteActivity" />
         <activity android:name=".LunchActivities.LunchGenerateActivity" />
+        <activity android:name=".LunchActivities.LunchSidesActivity" />
         <activity android:name=".LunchActivities.LunchActivity" />
         <activity android:name=".DinnerActivity" />
         <activity android:name=".DinnerGenerateActivity" />
