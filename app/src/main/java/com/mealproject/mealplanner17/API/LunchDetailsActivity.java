@@ -177,7 +177,7 @@ public class LunchDetailsActivity extends AppCompatActivity {
             @Override
             public void onRecipeClick(String recipeId) {
                 // Handle lunch side recipe click event (e.g., open another activity)
-                startActivity(new Intent(LunchDetailsActivity.this, RecipeDetailsActivity.class)
+                startActivity(new Intent(LunchDetailsActivity.this, LunchDetailsActivity.class)
                         .putExtra("id", recipeId));
             }
         });
