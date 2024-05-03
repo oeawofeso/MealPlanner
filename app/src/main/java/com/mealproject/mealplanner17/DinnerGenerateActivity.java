@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mealproject.mealplanner17.API.LunchDetailsActivity;
 import com.mealproject.mealplanner17.API.RecipeDetailsActivity;
 import com.mealproject.mealplanner17.API.RequestManager;
 import com.mealproject.mealplanner17.Adapters.RandomRecipeAdapter;
@@ -76,6 +78,16 @@ public class DinnerGenerateActivity extends AppCompatActivity {
         // Fetch initial data
         manager.getRandomRecipes(randomRecipeResponseListener, dinnerTags, dinnerTagsExclude);
         dialog.show();
+
+        Button buttonDinnerSides = findViewById(R.id.button_dinner_sides);
+        buttonDinnerSides.setVisibility(View.GONE);
+        buttonDinnerSides.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the DinnerSidesActivity
+                startActivity(new Intent(DinnerGenerateActivity.this, DinnerSidesActivity.class));
+            }
+        });
     }
 
     private final RandomRecipeResponseListener randomRecipeResponseListener = new RandomRecipeResponseListener() {
@@ -145,7 +157,7 @@ public class DinnerGenerateActivity extends AppCompatActivity {
     private final RecipeClickListener recipeClickListener = new RecipeClickListener() {
         @Override
         public void onRecipeClick(String id) {
-            startActivity(new Intent(DinnerGenerateActivity.this, RecipeDetailsActivity.class)
+            startActivity(new Intent(DinnerGenerateActivity.this, LunchDetailsActivity.class)
                     .putExtra("id", id));
         }
     };

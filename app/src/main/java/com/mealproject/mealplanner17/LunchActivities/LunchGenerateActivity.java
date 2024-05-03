@@ -58,7 +58,7 @@ public class LunchGenerateActivity extends AppCompatActivity {
         arrayAdapter2.setDropDownViewResource(R.layout.spinner_inner_text);
         spinner2.setAdapter(arrayAdapter2);
         spinner2.setOnItemSelectedListener(spinnerSelectedListener_2);
-
+        gotoSidesButton.setVisibility(View.GONE);
         gotoSidesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,13 +66,6 @@ public class LunchGenerateActivity extends AppCompatActivity {
                 startActivity(new Intent(LunchGenerateActivity.this, LunchSidesActivity.class));
             }
         });
-//        EnterButt = findViewById(R.id.EnterButt);
-//        EnterButt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                collectAndFetchRecipes();
-//            }
-//        });
 
         manager=new RequestManager(this);
         lunchTags.clear();
@@ -95,9 +88,8 @@ public class LunchGenerateActivity extends AppCompatActivity {
             recyclerView.setHasFixedSize(true);
 
             // Set the LayoutManager to a horizontal LinearLayoutManager
-            LinearLayoutManager layoutManager = new LinearLayoutManager(LunchGenerateActivity.this, LinearLayoutManager.HORIZONTAL, false);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(LunchGenerateActivity.this);
             recyclerView.setLayoutManager(layoutManager);
-
             // Set the adapter with your data
             randomRecipeAdapter = new RandomRecipeAdapter(LunchGenerateActivity.this, response.recipes, recipeClickListener);
             recyclerView.setAdapter(randomRecipeAdapter);

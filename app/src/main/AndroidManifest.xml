@@ -57,6 +57,7 @@
         <activity android:name=".LunchActivities.LunchActivity" />
         <activity android:name=".DinnerActivity" />
         <activity android:name=".DinnerGenerateActivity" />
+        <activity android:name=".DinnerSidesActivity" />
         <activity android:name=".DinnerFavoriteActivity" />
         <activity
             android:name=".DinnerViewDataActivity"
