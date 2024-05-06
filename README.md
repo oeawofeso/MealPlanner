@@ -2,7 +2,7 @@
 
 Meal Planner App
 
-Project Team
+Project Team:
 Bhanu Kakulla
 Joseph Lohman
 Oluwasogo Enoch Awofeso
@@ -12,7 +12,7 @@ Sandeep Vepuri
 College of Engineering and Applied Sciences
 University at Albany, SUNY
 
-Project Sponsor
+Project Sponsor:
 Dr. Pradeep Atrey
 University at Albany
 University at Albany - State University of New York
