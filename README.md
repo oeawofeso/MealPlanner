@@ -7,7 +7,7 @@ Bhanu Kakulla
 Joseph Lohman
 Oluwasogo Enoch Awofeso
 Sandeep Vepuri
-.............................
+
 
 College of Engineering and Applied Sciences
 University at Albany, SUNY
