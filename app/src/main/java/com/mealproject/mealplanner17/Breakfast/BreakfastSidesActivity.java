@@ -61,6 +61,7 @@ public class BreakfastSidesActivity extends AppCompatActivity {
         manager = new RequestManager(this);
         breakfastDrinkTags.clear();
         breakfastDrinkTags.add("drink");
+        //Clear initial tags and add our custom tags to generate correct sides
         manager.getRandomRecipes(randomRecipeResponseListener, breakfastDrinkTags, new ArrayList<>());
         dialog.show();
     }
@@ -71,7 +72,7 @@ public class BreakfastSidesActivity extends AppCompatActivity {
             recyclerView = findViewById(R.id.recycler_random);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new GridLayoutManager(BreakfastSidesActivity.this, 1));
-
+            //Set our layout, and orientation to use alongside XML layout
             randomRecipeAdapter = new RandomRecipeAdapter(BreakfastSidesActivity.this, response.recipes, recipeClickListener);
             recyclerView.setAdapter(randomRecipeAdapter);
         }
@@ -88,6 +89,7 @@ public class BreakfastSidesActivity extends AppCompatActivity {
             String selectedTag = adapterView.getSelectedItem().toString();
             if (!selectedTag.equals("drink")) {
                 breakfastDrinkTags.add(selectedTag);
+                //Clear main dish tags, and set our side dish tags
             }
             Log.d("BreakfastSidesActivity", "Selected tags: " + breakfastDrinkTags.toString());
             manager.getRandomRecipes(randomRecipeResponseListener, breakfastDrinkTags, new ArrayList<>());
@@ -99,6 +101,7 @@ public class BreakfastSidesActivity extends AppCompatActivity {
         }
     };
     private final RecipeClickListener recipeClickListener = new RecipeClickListener() {
+        //Navigate to information about side dishes
         @Override
         public void onRecipeClick(String id) {
             startActivity(new Intent(BreakfastSidesActivity.this, RecipeDetailsActivity.class)
@@ -111,6 +114,7 @@ public class BreakfastSidesActivity extends AppCompatActivity {
         List<String> drinkTagsExclude = new ArrayList<>();
         RequestManager manager = new RequestManager(context);
         manager.getRandomRecipes(new RandomRecipeResponseListener() {
+            // Fetch our side dish options and prepare to send them to our details page for displaying
             @Override
             public void didFetch(RandomRecipeApiResponse response, String message) {
                 // Update the adapter with the fetched drinks recipes

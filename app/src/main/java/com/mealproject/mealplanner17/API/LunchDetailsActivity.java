@@ -13,12 +13,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.mealproject.mealplanner17.Adapters.IngredientsAdapter;
-
 import com.mealproject.mealplanner17.Adapters.InstructionAdapter;
 import com.mealproject.mealplanner17.Adapters.RandomRecipeAdapter;
-import com.mealproject.mealplanner17.Breakfast.BreakfastSidesActivity;
 import com.mealproject.mealplanner17.Listeners.RandomRecipeResponseListener;
 import com.mealproject.mealplanner17.Listeners.RecipeClickListener;
 import com.mealproject.mealplanner17.Listeners.RecipeDetailsListener;
@@ -27,7 +24,6 @@ import com.mealproject.mealplanner17.ModelsAPI.RandomRecipeApiResponse;
 import com.mealproject.mealplanner17.ModelsAPI.RecipeDetailsResponse;
 import com.mealproject.mealplanner17.R;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -76,6 +72,7 @@ public class LunchDetailsActivity extends AppCompatActivity {
         dialog.setTitle("Loading");
         initObjects();
         id = Integer.parseInt(Objects.requireNonNull(getIntent().getStringExtra("id")));
+        //Call to API to fetch information about meals
         manager = new RequestManager(this);
         manager.getRecipeDetails(recipeDetailsListener, id);
         nextRecipeButton = findViewById(R.id.button_next_recipe);
@@ -86,7 +83,6 @@ public class LunchDetailsActivity extends AppCompatActivity {
     private void initObjects() {
         textView_meal_name = findViewById(R.id.textView_meal_name);
         textView_meal_source = findViewById(R.id.textView_meal_source);
-
         imageView_meal_image= findViewById(R.id.imageView_meal_image);
         imageView_ingredients = findViewById(R.id.imageView_ingredients);
         recycler_meal_ingredients= findViewById(R.id.recycler_meal_ingredients);
@@ -101,10 +97,12 @@ public class LunchDetailsActivity extends AppCompatActivity {
             Picasso.get().load(response.image).into(imageView_meal_image);
             recycler_meal_ingredients.setHasFixedSize(true);
             recycler_meal_ingredients.setLayoutManager(new LinearLayoutManager(LunchDetailsActivity.this,LinearLayoutManager.HORIZONTAL,false));
+            //Set recycler orientation, working with XML files
             ingredientsAdapter = new IngredientsAdapter(LunchDetailsActivity.this,response.extendedIngredients);
             recycler_meal_ingredients.setAdapter(ingredientsAdapter);
             APIgetRecipes = ApiCallForRecpies.getClient().create(ApiCallForRecpiesInterface.class);
             getInstructionsForRecipe(id);
+            //Call to API to get Recipe instructions
         }
         @Override
         public void didError(String message) {
@@ -113,6 +111,7 @@ public class LunchDetailsActivity extends AppCompatActivity {
     };
     private void getInstructionsForRecipe(int id) {
         Call<List<InstructionResponse>> call = APIgetRecipes.getInstructions(id,API_KEY);
+        //API call to get cooking instructions
         call.enqueue(new Callback<List<InstructionResponse>>() {
             @Override
             public void onResponse(Call <List<InstructionResponse>> call, Response<List<InstructionResponse>> response) {
@@ -123,6 +122,7 @@ public class LunchDetailsActivity extends AppCompatActivity {
                 }
                 recipeStepsRecylerView.setLayoutManager(new LinearLayoutManager( getApplicationContext()));
                 recipeStepsRecylerView.setAdapter(new InstructionAdapter(recipeSteps.get(0).getSteps(), R.layout.eachsteps, getApplicationContext()));
+                //Set layout for recipe instructions
             }
             @Override
             public void onFailure(Call<List<InstructionResponse>> call, Throwable t) {
@@ -132,7 +132,8 @@ public class LunchDetailsActivity extends AppCompatActivity {
         });
     }
     private void showLunchSides() {
-        // Create a RandomRecipeAdapter for lunch sides
+        // Works with LunchSidesActivity class to get information
+        // Displays LunchSidesActivity class on the bottom of the page
         RandomRecipeAdapter lunchSidesAdapter = new RandomRecipeAdapter(this, new ArrayList<>(), new RecipeClickListener() {
             @Override
             public void onRecipeClick(String recipeId) {
@@ -143,6 +144,7 @@ public class LunchDetailsActivity extends AppCompatActivity {
         });
         sidesRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         sidesRecyclerView.setAdapter(lunchSidesAdapter);
+        //Set recycler orientation in horizontal layout
         manager.getRandomRecipes(new RandomRecipeResponseListener() {
             @Override
             public void didFetch(RandomRecipeApiResponse response, String message) {
@@ -156,6 +158,7 @@ public class LunchDetailsActivity extends AppCompatActivity {
         }, getLunchSidesTags(), new ArrayList<>());
     }
     private List<String> getLunchSidesTags() {
+        // Gets tags located in String.xml to display meals within correct parameters
         List<String> lunchSidesTags = new ArrayList<>();
         lunchSidesTags.add("side dish"); // Add appropriate tags for lunch sides
         return lunchSidesTags;

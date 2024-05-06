@@ -56,12 +56,14 @@ public class DinnerSidesActivity extends AppCompatActivity {
         sideDishTags.add("side dish");
         sideDishTagsExclude.clear();
         sideDishTagsExclude.add("side dish");
+        //Clear main dish tags and prepare to display side dishes with correct parameters
         manager.getRandomRecipes(randomRecipeResponseListener, sideDishTags, sideDishTagsExclude);
         dialog.show();
     }
     private final RandomRecipeResponseListener randomRecipeResponseListener = new RandomRecipeResponseListener() {
         @Override
         public void didFetch(RandomRecipeApiResponse response, String message) {
+            //Method to confirm side dish options are gathered and ready to display on Details page
             dialog.dismiss();
             recyclerView = findViewById(R.id.recycler_view_horizontal);
             recyclerView.setHasFixedSize(true);
@@ -69,6 +71,7 @@ public class DinnerSidesActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(layoutManager);
             randomRecipeAdapter = new RandomRecipeAdapter(DinnerSidesActivity.this, response.recipes, recipeClickListener);
             recyclerView.setAdapter(randomRecipeAdapter);
+            // Set layout for page display, working with XML file
         }
         @Override
         public void didError(String message) {
@@ -77,6 +80,7 @@ public class DinnerSidesActivity extends AppCompatActivity {
     };
     private final RecipeClickListener recipeClickListener = new RecipeClickListener() {
         @Override
+        //Confirm whether option was clicked, to navigate to recipe details page
         public void onRecipeClick(String id) {
             startActivity(new Intent(DinnerSidesActivity.this, LunchDetailsActivity.class)
                     .putExtra("id", id));

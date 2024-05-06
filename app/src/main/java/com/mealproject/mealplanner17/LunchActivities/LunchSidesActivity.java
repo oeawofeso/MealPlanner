@@ -58,12 +58,14 @@ public class LunchSidesActivity extends AppCompatActivity {
         sideDishTags.add("side dish");
         sideDishTagsExclude.clear();
         sideDishTagsExclude.add("side dish");
+        //Set and clear tags from main dish to prepare for side dish parameters
         manager.getRandomRecipes(randomRecipeResponseListener, sideDishTags, sideDishTagsExclude);
         dialog.show();
     }
     private final RandomRecipeResponseListener randomRecipeResponseListener = new RandomRecipeResponseListener() {
         @Override
         public void didFetch(RandomRecipeApiResponse response, String message) {
+            //Confirm if meal information has been gathered and prepare to display it on recipe page
             dialog.dismiss();
             recyclerView = findViewById(R.id.recycler_view_horizontal);
             recyclerView.setHasFixedSize(true);
@@ -79,6 +81,7 @@ public class LunchSidesActivity extends AppCompatActivity {
     };
     private final RecipeClickListener recipeClickListener = new RecipeClickListener() {
         @Override
+        //Wait for user click to navigate to recipe details page to display side dish information
         public void onRecipeClick(String id) {
             startActivity(new Intent(LunchSidesActivity.this, LunchDetailsActivity.class)
                     .putExtra("id", id));
