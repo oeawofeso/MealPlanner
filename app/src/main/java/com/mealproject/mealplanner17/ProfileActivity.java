@@ -20,6 +20,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.IOException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+
+/**
+ * The ProfileActivity class manages user profile settings and display.
+ * It allows users to set and update their profile information such as username, profile picture,
+ * weight, height, and goal weight.
+ *
+ * This activity includes functionality to select profile picture from the device's gallery,
+ * set and update username, and select weight, height, and goal weight from predefined lists.
+ *
+ * References:
+ * - Modern Profile UI Design in Android: https://awsrh.blogspot.com/2017/10/modern-profile-ui-design-in-android.html
+ */
 public class ProfileActivity extends AppCompatActivity {
     private Spinner weightSpinner;
     private Spinner goalWeightSpinner;
