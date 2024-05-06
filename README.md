@@ -3,9 +3,9 @@
 Meal Planner App
 
 Project Team:
-Bhanu Kakulla
-Joseph Lohman
-Oluwasogo Enoch Awofeso
+Bhanu Kakulla, 
+Joseph Lohman, 
+Oluwasogo Enoch Awofeso, 
 Sandeep Vepuri
 
 
